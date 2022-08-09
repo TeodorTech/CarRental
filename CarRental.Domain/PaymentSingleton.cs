@@ -8,6 +8,7 @@ namespace CarRental.Domain
 {
     public class PaymentSingleton
     {
+        public Payment payment;
         private static PaymentSingleton intent = null;
         private PaymentSingleton()
         {

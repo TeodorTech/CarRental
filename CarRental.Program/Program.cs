@@ -40,9 +40,13 @@ namespace CarRental.Program
 
 
 
-            Payment payHonda = new Payment(100, true,"Card", "Accepted");
+            Payment payHonda = new Payment(100, true,"Card", "Pending");
             Payment payToyota = new Payment(150, false,"Crypto","Denied");
-
+            Payment payPorche = new Payment(200, false, "Card", "Pending");
+            Payment payBmw = new Payment(180, false, "Card", "Pending");
+            
+         
+ 
 
             Car carHonda = new Car("Honda", "Civic", 2020, 25000);
             Car carToyota = new Car("Toyota", "Supra", 2021, 30500);
@@ -68,13 +72,16 @@ namespace CarRental.Program
               }
               File.WriteAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCarIndexes.txt", array);*/
 
+            ///Test new payment methods
             payHonda.GetStatus();
             payHonda.GetType();
+
+            ///Test Vehicle factory
             var vehicle = VehicleFactory.GenerateVehicle(userTeodor.age);
             vehicle.CheckVehicle();
             var vehicle2 = VehicleFactory.GenerateVehicle(userAlex.age);
             vehicle2.CheckVehicle();
-
+            ///Test the singleton
             var payment = PaymentSingleton.ExecutePayment();
             var payment2 = PaymentSingleton.ExecutePayment();
             var payment3 = PaymentSingleton.ExecutePayment();

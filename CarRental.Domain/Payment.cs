@@ -51,15 +51,23 @@ namespace CarRental.Domain
             if (this.status == "Accepted")
                 Console.WriteLine("Your car is booked!!!!");
             else if (this.status == "Pending")
-                Console.WriteLine("Loading");
+                Console.WriteLine("Loading...");
             else
             {
                 Console.WriteLine("Payment failed! TRY AGAIN!");
             }
 
         }
+        public static List<string> GenerateListOfPayments(string[] status)
+        {
+
+            var ListOfPayments = new List<string>();
+            ListOfPayments.AddRange(status);
+            return ListOfPayments;
+
+        }
 
 
 
+        }
     }
-}

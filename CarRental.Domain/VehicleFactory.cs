@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CarRental.Domain.Interfaces;
 
 namespace CarRental.Domain
 {
@@ -40,9 +41,6 @@ namespace CarRental.Domain
             Console.WriteLine("You can not drive a CAR, but you can rent a bike!");
         }
     }
-    public interface IVehicle
-    {
-        void CheckVehicle();
-    }
+   
  
 }
