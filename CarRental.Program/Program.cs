@@ -30,7 +30,7 @@ namespace CarRental.Program
                 Console.WriteLine(er.Message);
             }
 
-#if DEBUG
+#if RELEASE
             finally
             {
                 Debug.WriteLine("We are in Debug");
@@ -40,8 +40,8 @@ namespace CarRental.Program
 
 
 
-            Payment payHonda = new Payment(100, true);
-            Payment payToyota = new Payment(150, false);
+            Payment payHonda = new Payment(100, true,"Card", "Accepted");
+            Payment payToyota = new Payment(150, false,"Crypto","Denied");
 
 
             Car carHonda = new Car("Honda", "Civic", 2020, 25000);
@@ -54,21 +54,33 @@ namespace CarRental.Program
             Booking bookHonda = new Booking(payHonda.Total(0), payHonda.isPaid, carHonda, userTeodor);
             Booking bookToyota = new Booking(payToyota.Total(10), payToyota.isPaid, carToyota, userAlex);
 
-            ///Here we take the make of the Car object and write them in a txt file
-            WriteReadText file = new WriteReadText();
-            file.WriteTheNames(new string[] { carHonda.make, carToyota.make, carAudi.make,carBmw.make,carMercedes.make,carPorche.make });
+            /*  ///Here we take the make of the Car object and write them in a txt file
+              WriteReadText file = new WriteReadText();
+              file.WriteTheNames(new string[] { carHonda.make, carToyota.make, carAudi.make,carBmw.make,carMercedes.make,carPorche.make });
 
-            ///Here i read from that txt file and then I create a new txt file with each car having an index.
-            int count = 1;
-            string[]array = new string[10];
-            foreach (string car in File.ReadAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCars.txt"))
-            {
-                array[count]=($"{car} is the car at the index {count++}");
-                
-            }
-            File.WriteAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCarIndexes.txt", array);
+              ///Here i read from that txt file and then I create a new txt file with each car having an index.
+              int count = 1;
+              string[]array = new string[10];
+              foreach (string car in File.ReadAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCars.txt"))
+              {
+                  array[count]=($"{car} is the car at the index {count++}");
 
+              }
+              File.WriteAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCarIndexes.txt", array);*/
+
+            payHonda.GetStatus();
+            payHonda.GetType();
+            var vehicle = VehicleFactory.GenerateVehicle(userTeodor.age);
+            vehicle.CheckVehicle();
+            var vehicle2 = VehicleFactory.GenerateVehicle(userAlex.age);
+            vehicle2.CheckVehicle();
+
+            var payment = PaymentSingleton.ExecutePayment();
+            var payment2 = PaymentSingleton.ExecutePayment();
+            var payment3 = PaymentSingleton.ExecutePayment();
         }
+
+
 
 
 

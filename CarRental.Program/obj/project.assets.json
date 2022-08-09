@@ -32,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CarRentalProject\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
+      "projectUniqueName": "D:\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
       "projectName": "CarRental.Program",
-      "projectPath": "D:\\CarRentalProject\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
+      "projectPath": "D:\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
       "packagesPath": "C:\\Users\\Teo\\.nuget\\packages\\",
-      "outputPath": "D:\\CarRentalProject\\CarRental\\CarRental.Program\\obj\\",
+      "outputPath": "D:\\CarRental\\CarRental.Program\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Teo\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -53,8 +53,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\CarRentalProject\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj": {
-              "projectPath": "D:\\CarRentalProject\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj"
+            "D:\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj": {
+              "projectPath": "D:\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj"
             }
           }
         }

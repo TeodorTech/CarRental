@@ -22,7 +22,7 @@ namespace CarRental.Domain
             this.lastName = lastName;
             try
             {
-                if (firstName == string.Empty ||lastName==string.Empty)
+                if (firstName == string.Empty || lastName == string.Empty)
                 {
                     throw new Exceptions.InvalidUserException("Enter your First name");
                 }
@@ -33,10 +33,8 @@ namespace CarRental.Domain
             }
             catch (Exceptions.InvalidUserException ex)
             {
-           
-                Console.WriteLine(ex.Message);
-             
 
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -60,10 +58,7 @@ namespace CarRental.Domain
             catch
             {
                 throw;
-
             }
         }
-
     }
-
 }

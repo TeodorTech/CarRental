@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "SingletonApp/1.0.0": {
+        "dependencies": {
+          "CarRental.Domain": "1.0.0"
+        },
+        "runtime": {
+          "SingletonApp.dll": {}
+        }
+      },
+      "CarRental.Domain/1.0.0": {
+        "runtime": {
+          "CarRental.Domain.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SingletonApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CarRental.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
