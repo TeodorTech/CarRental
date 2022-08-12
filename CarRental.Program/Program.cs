@@ -8,16 +8,18 @@ namespace CarRental.Program
 {
     public class Programe
     {
-        
+
         static void Main(string[] args)
         {
+           
 
-
-            User userTeodor = new User("", "Nicolau", 23);
-            User userAlex = new User("Alex", "Dinca", -5);
+            User userTeodor = new User("", "", 23);
+            User userAlex = new User("Alex", "Dinca",26);
+            User userGabi = new User("Gabi", "Stan", 24);
+            User userIoana = new User("Ioana", "Dinca", 23);
             try
             {
-                userAlex.CheckAge();
+                userAlex.CheckAge(userAlex.age);
 
             }
             catch (ExceptionAge ex)
@@ -37,26 +39,28 @@ namespace CarRental.Program
                 Console.WriteLine("The programe was executed in DEBUG");
             }
 #endif
-
-
-
-            Payment payHonda = new Payment(100, true,"Card", "Pending");
-            Payment payToyota = new Payment(150, false,"Crypto","Denied");
-            Payment payPorche = new Payment(200, false, "Card", "Pending");
-            Payment payBmw = new Payment(180, false, "Card", "Pending");
             
-         
- 
 
-            Car carHonda = new Car("Honda", "Civic", 2020, 25000);
+
+           /* Car carHonda = new Car("Honda", "Civic", 2020, 25000);
             Car carToyota = new Car("Toyota", "Supra", 2021, 30500);
             Car carAudi = new Car("Audi", "R8", 2007, 40000);
             Car carMercedes = new Car("Mercedes", "S-class", 2016, 42000);
             Car carBmw = new Car("BMW", "M4", 2018, 54000);
-            Car carPorche = new Car("Porche", "911 Carrera", 2021, 140000);
+            Car carPorche = new Car("Porche", "911 Carrera", 2021, 140000);*/
 
-            Booking bookHonda = new Booking(payHonda.Total(0), payHonda.isPaid, carHonda, userTeodor);
-            Booking bookToyota = new Booking(payToyota.Total(10), payToyota.isPaid, carToyota, userAlex);
+
+            
+            Car selctedCar = userAlex.SelectCar();
+            userAlex.PayCar(selctedCar);
+            
+           
+            /* var payCar2 = userAlex.PayCar(userAlex.Id);
+            ListofPayments.Add(payCar2);*/
+
+            /* Booking bookHonda = new Booking(payHonda.Total(0), payHonda.isPaid, carHonda, userTeodor);
+             Booking bookToyota = new Booking(payToyota.Total(10), payToyota.isPaid, carToyota, userAlex);*/
+            /*Booking bookPorche = new Booking(payPorche.Total(2), payPorche.isPaid, carPorche, userAlex);*/
 
             /*  ///Here we take the make of the Car object and write them in a txt file
               WriteReadText file = new WriteReadText();
@@ -73,18 +77,42 @@ namespace CarRental.Program
               File.WriteAllLines(@"D:\CarRentalProject\CarRental\Folder\ListOfCarIndexes.txt", array);*/
 
             ///Test new payment methods
-            payHonda.GetStatus();
-            payHonda.GetType();
+            /*  payHonda.GetStatus();
+              payHonda.GetType();
 
-            ///Test Vehicle factory
-            var vehicle = VehicleFactory.GenerateVehicle(userTeodor.age);
-            vehicle.CheckVehicle();
-            var vehicle2 = VehicleFactory.GenerateVehicle(userAlex.age);
-            vehicle2.CheckVehicle();
-            ///Test the singleton
-            var payment = PaymentSingleton.ExecutePayment();
-            var payment2 = PaymentSingleton.ExecutePayment();
-            var payment3 = PaymentSingleton.ExecutePayment();
+              ///Test Vehicle factory
+              var vehicle = VehicleFactory.GenerateVehicle(userTeodor.age);
+              vehicle.CheckVehicle();
+              var vehicle2 = VehicleFactory.GenerateVehicle(userAlex.age);
+              vehicle2.CheckVehicle();
+              ///Test the singleton
+              var payment = PaymentSingleton.ExecutePayment();
+              var payment2 = PaymentSingleton.ExecutePayment();
+              var payment3 = PaymentSingleton.ExecutePayment();
+
+              BookingV2 bookPorche = new BookingV2(carPorche.make, payPorche.status, userTeodor.firstName);
+              Console.WriteLine(bookPorche);*/
+            /*bookPorche.BookCar();
+            bookHonda.BookCar();
+*/
+
+            //var List = Car.GenerateListOfMakes(new string[] { carAudi.make, carBmw.make, carHonda.make, carMercedes.make, carPorche.make });
+
+
+            /*var ListCars = Car.GenerateListOfCars(new Car[] { carAudi, carBmw, carHonda, carMercedes, carPorche });*/
+            int count = 1;
+            foreach (Payment payment in Payment.listOfPayments)
+            {
+                Console.WriteLine($"Payment number {count} is {payment}");
+                count++;
+            }
+            foreach (User user in User.listOfUsers)
+            {
+                Console.WriteLine($"Logged users are {user.firstName}");
+            }
+
+
+
         }
 
 

@@ -9,21 +9,27 @@ namespace CarRental.Domain
 {
     public class Payment : IPayment
     {
-        private int id;
-        public int Id { get => id; set => id = value; }
+
         public int pricePerDay;
         public bool isPaid;
-        private readonly string type;
-        private readonly string status;
+        public string type;
+        public string status;
         public double numberDaysRented;
+        public string carmake;
+        public static List<Payment> listOfPayments = new List<Payment>();
 
-        public Payment(int pricePerDay, bool isPaid,string type, string status)
+        public override string ToString() => $"{carmake},{type},{status}";
+
+
+
+
+        public Payment(string carmake, string type)
         {
-            
-            this.pricePerDay = pricePerDay;
-            this.isPaid = isPaid;
+
             this.type = type;
-            this.status = status;
+            this.carmake = carmake;
+            listOfPayments.Add(this);
+
         }
         ///Here i have overloaded the method <summary>
         /// Here i have overloaded the method
@@ -59,16 +65,6 @@ namespace CarRental.Domain
             }
 
         }
-        public static List<string> GenerateListOfPayments(string[] status)
-        {
 
-            var ListOfPayments = new List<string>();
-            ListOfPayments.AddRange(status);
-            return ListOfPayments;
-
-        }
-
-
-
-        }
+    }
     }

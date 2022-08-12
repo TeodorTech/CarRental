@@ -34,8 +34,8 @@ namespace CarRental.Domain
                 }
                 else
                 {
-                    car.Available = !isBooked;
-                    if (car.Available)
+                    car.available = !isBooked;
+                    if (car.available)
                     {
                         Console.WriteLine("Car is available");
                     }
@@ -59,4 +59,4 @@ namespace CarRental.Domain
          }*/
     }
 }
-/*}*/
+
