@@ -11,12 +11,15 @@ namespace CarRental.Domain
     {
         public string firstName;
         public string lastName;
+        public int age;
+        public string email;
         private Guid id;
         public Guid Id { get => id; }
-        public int age;
         public Car car;
         public Payment payment;
         public static List<User> listOfUsers = new List<User>();
+        public override string ToString() => $"{firstName},{lastName},{age}";
+
         public User()
         {
         }
@@ -30,21 +33,13 @@ namespace CarRental.Domain
             listOfUsers.Add(this);
             try
             {
-                if (firstName == string.Empty || lastName == string.Empty)
-                {
-                    throw new Exceptions.InvalidUserException("Enter your First name");
-
-                }
-                else
-                {
-                    Console.WriteLine($"You entered succesfully your name {firstName} {lastName}");
-                }
+                CheckName(firstName, lastName);
             }
-            catch (Exceptions.InvalidUserException ex)
+            catch
             {
-
-                Console.WriteLine(ex.Message);
+                Console.WriteLine("You failed to enter your name");
             }
+            
 
         }
 
@@ -81,10 +76,15 @@ namespace CarRental.Domain
             Console.WriteLine("What car do you want to rent?");
             string make = Console.ReadLine();
             var listOfCars = Car.GenerateListOfCars();
+            
             foreach (Car car in listOfCars)
+            
             {
-                if (car.make == make && car.available == true)
+                if (car.make == make)
+                {
+                    /*car.available = false;*/
                     return car;
+                }
             }
             return car;
         }
@@ -95,14 +95,31 @@ namespace CarRental.Domain
             string type = Console.ReadLine();
             payment = new Payment(car.make, type);
             payment.status = "Paid";
-            car.available = false;
+            car.available = true;
             Console.WriteLine("Your car is paid");
 
         }
-            
 
+        public void CheckName(string firstName, string lastName)
+        {
+            try
+            {
+                if (firstName == string.Empty || lastName == string.Empty)
+                {
+                    throw new Exceptions.InvalidUserException("You failed to enter your name");
+
+                }
+                else
+                {
+                    Console.WriteLine($"You entered succesfully your name {firstName} {lastName}");
+                }
+            }
+            catch (Exceptions.InvalidUserException ex)
+            {
+
+                throw;
+            }
         }
-
-
+        }
 }
 

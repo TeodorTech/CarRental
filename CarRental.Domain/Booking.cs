@@ -53,10 +53,7 @@ namespace CarRental.Domain
             
         }
 
-        /* catch (Exceptions.InvalidBookingException ex)
-         {
-             Console.WriteLine(ex.Message);
-         }*/
+        
     }
 }
 

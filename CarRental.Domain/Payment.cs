@@ -20,9 +20,6 @@ namespace CarRental.Domain
 
         public override string ToString() => $"{carmake},{type},{status}";
 
-
-
-
         public Payment(string carmake, string type)
         {
 
