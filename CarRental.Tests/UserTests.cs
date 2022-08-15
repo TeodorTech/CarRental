@@ -41,5 +41,20 @@ namespace CarRental.Tests
             //Assert
             Assert.Throws<ExceptionAge>(() =>  user.CheckAge(age));
         }
+        [Theory]
+        [InlineData("","Nicolau")]
+        [InlineData("Teodor","")]
+        [InlineData("","")]
+
+        public void User_ThrowErrorIfNoName(string firstName,string lastName)
+        {
+            //Assemble
+            User user = new User();
+
+            //Act
+
+            //Assert
+            Assert.Throws<InvalidUserException>(()=> user.CheckName(firstName, lastName));
+        }
     }
 }
