@@ -92,10 +92,10 @@ namespace CarRental.Domain
         public void PayCar(Car car)
         {
             Console.WriteLine("How do you want to pay?");
-            string type = Console.ReadLine();
-            payment = new Payment(car.make, type);
+            string paymentType = Console.ReadLine();
+            payment = new Payment(car.make, paymentType);
             payment.status = "Paid";
-            car.available = true;
+            car.available = false;
             Console.WriteLine("Your car is paid");
 
         }

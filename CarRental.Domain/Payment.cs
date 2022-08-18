@@ -36,6 +36,7 @@ namespace CarRental.Domain
         public int Total(int numberDaysRented) { return pricePerDay * numberDaysRented; }
         public double Total(double numberDaysRented) { return pricePerDay * numberDaysRented; }
         public float Total(float numberDaysRented) { return pricePerDay * numberDaysRented; }
+      
 
         public void GetType()
         {

@@ -32,9 +32,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
-      "projectName": "CarRental.Program",
-      "projectPath": "D:\\CarRental\\CarRental.Program\\CarRental.Program.csproj",
+      "projectUniqueName": "D:\\CarRental\\CarRental.Program\\CarRental.Presentation.csproj",
+      "projectName": "CarRental.Presentation",
+      "projectPath": "D:\\CarRental\\CarRental.Program\\CarRental.Presentation.csproj",
       "packagesPath": "C:\\Users\\Teo\\.nuget\\packages\\",
       "outputPath": "D:\\CarRental\\CarRental.Program\\obj\\",
       "projectStyle": "PackageReference",

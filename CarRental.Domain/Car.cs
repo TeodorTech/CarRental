@@ -30,6 +30,6 @@ namespace CarRental.Domain
 
             };
         }
-        public static int Total(int pricePerDay, int numberDaysRented) { return pricePerDay * numberDaysRented; }
+      
     }
 }
