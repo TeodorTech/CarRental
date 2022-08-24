@@ -8,28 +8,36 @@ namespace CarRental.Domain
 {
     public class Car
     {
-        private Guid id;
-        public Guid Id { get => id; }
-        public string make;
-        public int year;
-        public bool available;
-        public float price;
-        public override string ToString() => $"{make},{available}";
 
-        public static List<Car> GenerateListOfCars()
+        public int Id { get; set; }
+        public string Make { get; set; }
+        public int Year { get; set; }
+        public bool Available { get; set; }
+        public float Price { get; set; }
+        public ICollection<Booking> Booking { get; set; }
+        public override string ToString() => $"{Make},{Available}";
+        public Car()
         {
-            return new List<Car>
-            {
-                new Car { make = "Honda", price = 15000 },
-                new Car { make = "Mazda", price = 25000 },
-                new Car { make = "Dacia", price = 1000 },
-                new Car { make = "Audi", price = 40000 },
-                new Car { make = "Porche", price = 50000 },
-                new Car { make = "Mercedes", price = 100500 },
-                new Car { make = "BMW", price = 50500 },
 
-            };
         }
-      
+
+
+        public Car(int id, string make, float  price)
+        {
+            this.Id = id;
+            this.Make = make;
+            this.Price = price;
+
+        }
+
+        public void SetUpdate(Car car)
+        {
+            Make = car.Make;
+            Price = car.Price;
+        }
+
+
+
+
     }
 }

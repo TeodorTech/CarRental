@@ -8,52 +8,19 @@ namespace CarRental.Domain
 {
     public class Booking
     {
-        private Guid id;
-        public Guid Id { get => id; }
+        public int BookingId { get; set; }
+        public int CarId { get; set; }
+        public Car Car { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
 
-        public int total;
-        public bool isBooked;
-        public Car car;
-        public User user;
+        public override string ToString() => $"The car with id {CarId} is book by the user with{UserId}";
 
-        public Booking(int total, bool isBooked, Car car, User user)
+        public Booking( int carId, int userId)
         {
-            id = Guid.NewGuid();
-            this.total = total;
-            this.isBooked = isBooked;
-            this.car = car;
-
+            CarId = carId;
+            UserId = userId;
         }
-        public void BookCar()
-        {
-            try
-            {
-                if (car == null)
-                {
-                    throw new  Exceptions.InvalidBookingException("You need to select a car");
-                }
-                else
-                {
-                    car.available = !isBooked;
-                    if (car.available)
-                    {
-                        Console.WriteLine("Car is available");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Car is NOT available!!!");
-                    }
-                }
-               
-            }
-            catch (Exceptions.InvalidBookingException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            
-        }
-
-        
     }
 }
 

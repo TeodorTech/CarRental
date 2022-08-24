@@ -1,4 +1,4 @@
-﻿using CarRental.Domain.Interfaces;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,62 +7,57 @@ using System.Threading.Tasks;
 
 namespace CarRental.Domain
 {
-    public class User:IUser
+    public class User 
     {
-        public string firstName;
-        public string lastName;
-        public int age;
-        public string email;
-        private Guid id;
-        public Guid Id { get => id; }
-        public Car car;
-        public Payment payment;
-        public static List<User> listOfUsers = new List<User>();
-        public override string ToString() => $"{firstName},{lastName},{age}";
+
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public string Email { get; set; }
+        public ICollection<Booking> Booking { get; set; }
+
+        public override string ToString() => $"{FirstName},{LastName},{Age}";
 
         public User()
         {
         }
 
-        public User(string firstName, string lastName, int age)
+        public User(string FirstName, string LastName, int Age)
         {
-            this.firstName = firstName;
-            this.age = age;
-            id = Guid.NewGuid();
-            this.lastName = lastName;
-            listOfUsers.Add(this);
+            this.FirstName = FirstName;
+            this.Age = Age;
+            this.LastName = LastName;
             try
             {
-                CheckName(firstName, lastName);
+                CheckName(FirstName, LastName);
             }
             catch
             {
                 Console.WriteLine("You failed to enter your name");
             }
-            
-
         }
 
 
-        public string CheckAge(int age)
+        public string CheckAge(int Age)
         {
             try
             {
-                if (age > 18 && age < 65)
+                if (Age > 18 && Age < 65)
                 {
                     return "You can drive <3";
                 }
-                else if (age < 18 && age > 0)
+                else if (Age < 18 && Age > 0)
                 {
                     throw new Exceptions.ExceptionAge("!!!Rent a bike!!!");
                 }
-                else if (age > 65)
+                else if (Age > 65)
                 {
                     throw new Exceptions.ExceptionAge("You are too old to drive");
                 }
                 else
                 {
-                    throw new Exceptions.ExceptionAge("!!!Try again, age was incorect!!!");
+                    throw new Exceptions.ExceptionAge("!!!Try again, Age was incorect!!!");
                 }
             }
             catch
@@ -71,47 +66,21 @@ namespace CarRental.Domain
             }
         }
 
-        public Car SelectCar()
-        {
-            Console.WriteLine("What car do you want to rent?");
-            string make = Console.ReadLine();
-            var listOfCars = Car.GenerateListOfCars();
-            
-            foreach (Car car in listOfCars)
-            
-            {
-                if (car.make == make)
-                {
-                    /*car.available = false;*/
-                    return car;
-                }
-            }
-            return car;
-        }
 
-        public void PayCar(Car car)
-        {
-            Console.WriteLine("How do you want to pay?");
-            string paymentType = Console.ReadLine();
-            payment = new Payment(car.make, paymentType);
-            payment.status = "Paid";
-            car.available = false;
-            Console.WriteLine("Your car is paid");
 
-        }
-
-        public void CheckName(string firstName, string lastName)
+        public void CheckName(string Firstname, string LastName)
         {
             try
             {
-                if (firstName == string.Empty || lastName == string.Empty)
+                if (Firstname == string.Empty || LastName == string.Empty)
                 {
                     throw new Exceptions.InvalidUserException("You failed to enter your name");
 
                 }
                 else
                 {
-                    Console.WriteLine($"You entered succesfully your name {firstName} {lastName}");
+                    Console.WriteLine($"You entered succesfully your name {Firstname} {LastName}");
+
                 }
             }
             catch (Exceptions.InvalidUserException ex)
@@ -120,6 +89,6 @@ namespace CarRental.Domain
                 throw;
             }
         }
-        }
+    }
 }
 

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CarRental.Domain.Interfaces;
+
 
 namespace CarRental.Domain
 {
-    public class Payment : IPayment
+    public class Payment 
     {
 
         public int pricePerDay;
@@ -38,31 +38,9 @@ namespace CarRental.Domain
         public float Total(float numberDaysRented) { return pricePerDay * numberDaysRented; }
       
 
-        public void GetType()
-        {
-            if (this.type == "Card")
-                Console.WriteLine("Redirect to payment page");
-            else if (this.type == "Cash")
-                Console.WriteLine("You need to pay extra");
-            else
-            {
-                Console.WriteLine("We do not accept crypto");
-            }
+  
 
-        }
-
-        public void GetStatus()
-        {
-            if (this.status == "Accepted")
-                Console.WriteLine("Your car is booked!!!!");
-            else if (this.status == "Pending")
-                Console.WriteLine("Loading...");
-            else
-            {
-                Console.WriteLine("Payment failed! TRY AGAIN!");
-            }
-
-        }
+ 
 
     }
     }
