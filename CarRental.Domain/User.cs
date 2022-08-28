@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CarRental.Domain
 {
-    public class User 
+    public class User
     {
 
         public int Id { get; set; }
@@ -68,6 +68,11 @@ namespace CarRental.Domain
 
 
 
+        public void SetUserUpdate(User user)
+        {
+            Age = user.Age;
+            Email = user.Email;
+        }
         public void CheckName(string Firstname, string LastName)
         {
             try

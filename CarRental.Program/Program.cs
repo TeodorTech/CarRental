@@ -91,6 +91,13 @@ namespace CarRental.Program
                 userId = 1,
                 carId=2
             });
+
+            var update = await mediator.Send(new UpdateCar
+            {
+                Id = 3,
+                price = 500
+            });
+            var newListOfCars = await mediator.Send(new GetAllCars { });
             Console.WriteLine();
             
 

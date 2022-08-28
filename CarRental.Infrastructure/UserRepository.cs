@@ -19,6 +19,11 @@ namespace CarRental.Infrastrcuture
             _users.Add(user);
 
         }
+        public void UpdateUser(User user)
+        {
+            var toUpdate = _users.FirstOrDefault(u => u.Id == user.Id);
+            toUpdate.SetUserUpdate(user);
+        }
 
         public void Delete(User user)
         {
