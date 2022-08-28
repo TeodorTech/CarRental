@@ -12,7 +12,7 @@ namespace CarRental.Domain.Interfaces.Repositories
         public void CreateTheBook(Booking book);
         public Booking GetById(int id);
         public IEnumerable<Booking> GetAll();
-        public void Delete(int id);
+        public void Delete(Booking booking);
 
      
 

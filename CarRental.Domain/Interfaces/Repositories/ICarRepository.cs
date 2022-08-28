@@ -12,7 +12,7 @@ namespace CarRental.Application.Repositories
 
         public void CreateCar(Car car);
        
-        public void Delete(string make);
+        public void Delete(Car car);
         public  Car GetById(int id);
         public List<Car> GetAll();
         public void Update(Car car);

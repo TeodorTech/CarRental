@@ -673,7 +673,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
-          "CarRental.Application.Interfaces": "1.0.0",
           "CarRental.Domain": "1.0.0",
           "MediatR": "10.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
@@ -685,23 +684,6 @@
         },
         "runtime": {
           "bin/placeholder/CarRental.Application.dll": {}
-        }
-      },
-      "CarRental.Application.Interfaces/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CarRental.Domain": "1.0.0",
-          "MediatR": "10.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
-          "Microsoft.EntityFrameworkCore": "6.0.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8"
-        },
-        "compile": {
-          "bin/placeholder/CarRental.Application.Interfaces.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CarRental.Application.Interfaces.dll": {}
         }
       },
       "CarRental.Domain/1.0.0": {
@@ -1988,11 +1970,6 @@
       "type": "project",
       "path": "../CarRental.Application/CarRental.Application.csproj",
       "msbuildProject": "../CarRental.Application/CarRental.Application.csproj"
-    },
-    "CarRental.Application.Interfaces/1.0.0": {
-      "type": "project",
-      "path": "../CarRental.Application.Interfaces/CarRental.Application.Interfaces.csproj",
-      "msbuildProject": "../CarRental.Application.Interfaces/CarRental.Application.Interfaces.csproj"
     },
     "CarRental.Domain/1.0.0": {
       "type": "project",

@@ -669,23 +669,6 @@
           }
         }
       },
-      "CarRental.Application.Interfaces/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v6.0",
-        "dependencies": {
-          "CarRental.Domain": "1.0.0",
-          "MediatR": "10.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
-          "Microsoft.EntityFrameworkCore": "6.0.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8"
-        },
-        "compile": {
-          "bin/placeholder/CarRental.Application.Interfaces.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/CarRental.Application.Interfaces.dll": {}
-        }
-      },
       "CarRental.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -1966,11 +1949,6 @@
         "version.txt"
       ]
     },
-    "CarRental.Application.Interfaces/1.0.0": {
-      "type": "project",
-      "path": "../CarRental.Application.Interfaces/CarRental.Application.Interfaces.csproj",
-      "msbuildProject": "../CarRental.Application.Interfaces/CarRental.Application.Interfaces.csproj"
-    },
     "CarRental.Domain/1.0.0": {
       "type": "project",
       "path": "../CarRental.Domain/CarRental.Domain.csproj",
@@ -1979,7 +1957,6 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "CarRental.Application.Interfaces >= 1.0.0",
       "CarRental.Domain >= 1.0.0",
       "MediatR >= 10.0.1",
       "MediatR.Extensions.Microsoft.DependencyInjection >= 10.0.1",
@@ -2016,9 +1993,6 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "D:\\CarRental\\CarRental.Application.Interfaces\\CarRental.Application.Interfaces.csproj": {
-              "projectPath": "D:\\CarRental\\CarRental.Application.Interfaces\\CarRental.Application.Interfaces.csproj"
-            },
             "D:\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj": {
               "projectPath": "D:\\CarRental\\CarRental.Domain\\CarRental.Domain.csproj"
             }

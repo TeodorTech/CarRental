@@ -11,7 +11,7 @@ namespace CarRental.Application.Repositories
     {
         public void CreateUser(User user);
         
-        public void Delete(string firstName);
+        public void Delete(User user);
 
         public User GetById(int id);
         public List<User> GetAll();

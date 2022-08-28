@@ -19,9 +19,7 @@ D:\CarRental\CarRental.Program\obj\Debug\net6.0\ref\CarRental.Presentation.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Infrastructure.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Infrastructure.pdb
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Application.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Application.Interfaces.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Application.pdb
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Application.Interfaces.pdb
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.Contracts.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

@@ -20,9 +20,8 @@ namespace CarRental.Infrastrcuture
 
         }
 
-        public void Delete(string firstName)
+        public void Delete(User user)
         {
-            var user = _users.FirstOrDefault(u => u.FirstName == firstName);
             _users.Remove(user);
         }
         public User GetById(int id)

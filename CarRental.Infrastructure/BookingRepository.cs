@@ -24,7 +24,7 @@ namespace CarRental.Domain
         {
             return ListOfBookings;
         }
-        public void Delete(int id)
+        public void Delete(Booking booking)
         {
             ListOfBookings.Remove(ListOfBookings.FirstOrDefault(b => b.BookingId == id));
         }

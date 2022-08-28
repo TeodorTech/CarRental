@@ -29,9 +29,8 @@ namespace CarRental.Infrastrcuture
         }
 
 
-        public void Delete(string make)
+        public void Delete(Car car)
         {
-            var car = _cars.FirstOrDefault(c => c.Make == make);
             _cars.Remove(car);
         }
 

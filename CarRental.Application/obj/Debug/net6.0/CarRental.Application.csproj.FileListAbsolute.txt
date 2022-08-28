@@ -1,9 +1,7 @@
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.deps.json
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.dll
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.pdb
-D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.Interfaces.dll
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Domain.dll
-D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.Interfaces.pdb
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Domain.pdb
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.csproj.AssemblyReference.cache
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.GeneratedMSBuildEditorConfig.editorconfig
