@@ -18,11 +18,11 @@ namespace CarRental.Application.Users.Commands
             _userRepo = userRepo;
         }
 
-        public Task<User> Handle(CreateUser request, CancellationToken cancellationToken)
+        public async Task<User> Handle(CreateUser request, CancellationToken cancellationToken)
         {
-            var user = new User(request.FirstName, request.LastName, request.Age);
-            _userRepo.CreateUser(user);
-            return Task.FromResult(user);
+            var user = new User(request.FirstName, request.LastName, request.Age,request.Email);
+            await _userRepo.CreateUser(user);
+            return user;
 
         }
     }

@@ -9,13 +9,13 @@ namespace CarRental.Application.Repositories
 {
    public interface IUserRepository
     {
-        public void CreateUser(User user);
+        public Task CreateUser(User user);
         public void UpdateUser(User user);
         
         public void Delete(User user);
 
         public User GetById(int id);
         public List<User> GetAll();
-       
+
     }
 }

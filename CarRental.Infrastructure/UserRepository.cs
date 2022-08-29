@@ -1,6 +1,7 @@
 ﻿
 using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +12,37 @@ namespace CarRental.Infrastrcuture
 {
     public class UserRepository:IUserRepository
     {
-        private List<User> _users = new List<User>();
-
-
-        public void CreateUser(User user)
+        private readonly DataContext _context;
+        public UserRepository(DataContext context)
         {
-            _users.Add(user);
+            _context = context;
+        }
+
+        public async Task CreateUser(User user)
+        {
+           await _context.User.AddAsync(user);
+            await _context.SaveChangesAsync();
 
         }
         public void UpdateUser(User user)
         {
-            var toUpdate = _users.FirstOrDefault(u => u.Id == user.Id);
-            toUpdate.SetUserUpdate(user);
+            _context.User.Update(user);
+            _context.SaveChanges();
         }
 
         public void Delete(User user)
         {
-            _users.Remove(user);
+            _context.User.Remove(user);
+            _context.SaveChanges();
         }
         public User GetById(int id)
         {
-            return _users.FirstOrDefault(u => u.Id == id);
+            var user = _context.User.SingleOrDefault(u => u.Id == id);
+            return user;
         }
         public List<User> GetAll()
         {
-            return _users;
+            return _context.User.ToList();
         }
 
     }

@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,45 +11,41 @@ namespace CarRental.Infrastrcuture
 {
     public class CarRepository : ICarRepository
     {
-        private List<Car> _cars = new List<Car>
-
-            {
-                new Car {  Id = 1,Make = "Honda", Price = 15000 },
-                new Car {  Id = 2,Make = "Mazda", Price = 25000 },
-                new Car { Id = 3, Make = "Dacia", Price = 1000 },
-                new Car { Id = 4, Make = "Audi", Price = 40000 },
-                new Car { Id = 5, Make = "Porche", Price = 50000 },
-                new Car { Id = 6, Make = "Mercedes", Price = 100500 },
-                new Car { Id = 7, Make = "BMW", Price = 50500 },
-
-            };
-
-        public void CreateCar(Car car)
+        private readonly DataContext _context;
+        public CarRepository(DataContext context)
         {
-            _cars.Add(car);
+            _context = context;
+        }
+
+        public async Task CreateCar(Car car)
+        {
+            await _context.Cars.AddAsync(car);
+            await _context.SaveChangesAsync();
         }
 
 
-        public void Delete(Car car)
+        public  void Delete(Car car)
         {
-            _cars.Remove(car);
+           _context.Cars.Remove(car);
+            _context.SaveChanges();
+             
         }
 
-        public void Update(Car car)
+        public void  Update(Car car)
         {
-            var toUpdate = _cars.FirstOrDefault(c => c.Id == car.Id);
-            toUpdate.SetUpdate(car);
-
+             _context.Cars.Update(car);
+             _context.SaveChanges();
         }
 
         public Car GetById(int id)
         {
-            return _cars.FirstOrDefault(c => c.Id == id);
+           var car = _context.Cars.FirstOrDefault(c => c.Id == id);
+            return car;
         }
 
         public List<Car> GetAll()
         {
-            return _cars;
+            return _context.Cars.ToList();
         }
     }
 }

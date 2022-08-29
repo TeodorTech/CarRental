@@ -17,11 +17,11 @@ namespace CarRental.Application.Cars.Commands
             _carRepo = carRepo;
         }
 
-        public Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
+        public  Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
             var car = _carRepo.GetById(request.CarId);
             if (car == null) return null;
-            _carRepo.Delete(car);
+             _carRepo.Delete(car);
             return Task.FromResult(car);
         }
     }

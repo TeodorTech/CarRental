@@ -10,7 +10,7 @@ namespace CarRental.Application.Repositories
     public interface ICarRepository
     {
 
-        public void CreateCar(Car car);
+        public Task CreateCar(Car car);
        
         public void Delete(Car car);
         public  Car GetById(int id);

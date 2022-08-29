@@ -1551,7 +1551,6 @@
       "xunit.runner.visualstudio/2.4.3": {},
       "CarRental.Domain/1.0.0": {
         "dependencies": {
-          "CarRental.Domain.Interfaces": "1.0.0",
           "MediatR": "10.0.1",
           "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
           "Microsoft.EntityFrameworkCore": "6.0.8",
@@ -1559,17 +1558,6 @@
         },
         "runtime": {
           "CarRental.Domain.dll": {}
-        }
-      },
-      "CarRental.Domain.Interfaces/1.0.0": {
-        "dependencies": {
-          "MediatR": "10.0.1",
-          "MediatR.Extensions.Microsoft.DependencyInjection": "10.0.1",
-          "Microsoft.EntityFrameworkCore": "6.0.8",
-          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.8"
-        },
-        "runtime": {
-          "CarRental.Domain.Interfaces.dll": {}
         }
       }
     }
@@ -2519,11 +2507,6 @@
       "hashPath": "xunit.runner.visualstudio.2.4.3.nupkg.sha512"
     },
     "CarRental.Domain/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "CarRental.Domain.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

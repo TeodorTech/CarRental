@@ -19,11 +19,12 @@ namespace CarRental.Application.Cars.Commands
             _carRepo = carRepo;
         }
 
-        public Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
+        public async Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
         {
-            var car = new Car(request.Id, request.Make, request.Price);
-            _carRepo.CreateCar(car);
-            return Task.FromResult(car);
+            var car = new Car(request.Make,request.Model, request.Year, request.PricePerDay);
+            await _carRepo.CreateCar(car);
+           
+            return car;
         }
     }
 }

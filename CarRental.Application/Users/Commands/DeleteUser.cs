@@ -10,6 +10,6 @@ namespace CarRental.Application.Users.Commands
 {
     public class DeleteUser:IRequest<User>
     {
-        public int Id { get; set; }
+        public int UserId { get; set; }
     }
 }

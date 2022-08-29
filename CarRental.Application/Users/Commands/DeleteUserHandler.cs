@@ -19,7 +19,7 @@ namespace CarRental.Application.Users.Commands
 
         public Task<User> Handle(DeleteUser request, CancellationToken cancellationToken)
         {
-            var user = _userRepo.GetById(request.Id);
+            var user = _userRepo.GetById(request.UserId);
             if (user == null) return null;
             _userRepo.Delete(user);
             return Task.FromResult(user);

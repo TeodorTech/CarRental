@@ -17,13 +17,17 @@ namespace CarRental.Application.Cars.Commands
             _carRepo = carRepo;
         }
 
-        public  Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
+        public Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
         {
-            var car = _carRepo.GetById(request.Id);
-            if (car == null) return null;
-            car.Price = request.price;
-             _carRepo.Update(car);
-            return Task.FromResult(car);
+            var carToUpdate = new Car
+            {
+                Id = request.Id,
+                Make=request.Make,
+                Model = request.Model,
+                PricePerDay = request.PricePerDay,
+            };
+            _carRepo.Update(carToUpdate);
+            return Task.FromResult(carToUpdate);
         }
     }
 }

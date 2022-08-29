@@ -5,13 +5,16 @@ using CarRental.Application.Cars.Commands;
 using CarRental.Application.Commands;
 using CarRental.Application.Queries;
 using CarRental.Application.Repositories;
+using CarRental.Application.Users;
 using CarRental.Application.Users.Commands;
 using CarRental.Application.Users.Queries;
 using CarRental.Domain;
 using CarRental.Domain.Exceptions;
 using CarRental.Domain.Interfaces.Repositories;
 using CarRental.Infrastrcuture;
+using CarRental.Infrastructure;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
 
@@ -24,26 +27,6 @@ namespace CarRental.Program
         {
            
 
-
-            User userTeodor = new User("", "Nicolau", 23);
-            User userAlex = new User("Alex", "Dinca", 26);
-            User userGabi = new User("Gabi", "Stan", 24);
-            User userIoana = new User("Ioana", "Dinca", 23);
-            try
-            {
-                userAlex.CheckAge(userAlex.Age);
-
-            }
-            catch (ExceptionAge ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            catch (Exception er)
-            {
-                Debug.WriteLine(er.Message);
-                Console.WriteLine(er.Message);
-            }
-
 #if RELEASE
             finally
             {
@@ -54,18 +37,41 @@ namespace CarRental.Program
 
             var diContainer = new ServiceCollection()
                 .AddScoped<ICarRepository, CarRepository>()
+                .AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;"))
                 .AddScoped<IUserRepository, UserRepository>()
                 .AddScoped<IBookingRepository, BookingRepository>()
                 .AddMediatR(typeof(CreateCarHandler))
                 .BuildServiceProvider();
             var mediator = diContainer.GetRequiredService<IMediator>();
-            /* var newcar = await mediator.Send(new CreateCar
-             {   Id=10,
-                 Make = "Paganni",
-                 Price = 1000
-             });
-             var newListOfCars = await mediator.Send(new GetAllCars{ });*/
-            var user1 = await mediator.Send(new CreateUser
+            /*   var newcar = await mediator.Send(new CreateCar
+               {
+
+                   Make = "Dacia",
+                   Model = "Logan",
+                   Year = 2005,
+                   PricePerDay = 100
+               });*/
+            /*await mediator.Send(new DeleteCar { CarId = 1 });*/
+            /*await mediator.Send(new UpdateCar { Id = 1,Make="Dacia",Model="Logan",PricePerDay=1 });*/
+        /*    var newUser = await mediator.Send(new CreateUser
+            {
+                FirstName = "Alex",
+                LastName = "Dinca",
+                Age = 26,
+                Email = "alex.dinca@yahoo.com"
+            });*/
+            /*await mediator.Send(new DeleteUser { UserId = 1 });*/
+            await mediator.Send(new UpdateUser
+            {
+                Id = 3,
+                FirstName = "Alex",
+                LastName = "Dinca",
+                Age = 26,
+                Email = "newAlex.newDinca@yahoo.com"
+
+            });
+
+            /*var user1 = await mediator.Send(new CreateUser
             {
                 FirstName = "Johhny",
                 LastName = "Bravo",
@@ -95,9 +101,9 @@ namespace CarRental.Program
             var update = await mediator.Send(new UpdateCar
             {
                 Id = 3,
-                price = 500
+                PricePerDay = 500
             });
-            var newListOfCars = await mediator.Send(new GetAllCars { });
+            var newListOfCars = await mediator.Send(new GetAllCars { });*/
             Console.WriteLine();
             
 

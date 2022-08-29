@@ -11,29 +11,29 @@ namespace CarRental.Domain
 
         public int Id { get; set; }
         public string Make { get; set; }
+        public string Model { get; set; }
         public int Year { get; set; }
-        public bool Available { get; set; }
-        public float Price { get; set; }
+        public float PricePerDay { get; set; }
         public ICollection<Booking> Booking { get; set; }
-        public override string ToString() => $"{Make},{Available}";
         public Car()
         {
 
         }
 
-
-        public Car(int id, string make, float  price)
+        public Car( string make, string model, int year, float pricePerDay)
         {
-            this.Id = id;
+           
+            this.Year = year;
             this.Make = make;
-            this.Price = price;
+            this.Model = model;
+            this.PricePerDay = pricePerDay;
 
         }
 
         public void SetUpdate(Car car)
         {
             Make = car.Make;
-            Price = car.Price;
+            PricePerDay = car.PricePerDay;
         }
 
 

@@ -23,11 +23,12 @@ namespace CarRental.Domain
         {
         }
 
-        public User(string FirstName, string LastName, int Age)
+        public User(string FirstName, string LastName, int Age,string Email)
         {
             this.FirstName = FirstName;
-            this.Age = Age;
             this.LastName = LastName;
+            this.Age = Age;
+            this.Email = Email;
             try
             {
                 CheckName(FirstName, LastName);

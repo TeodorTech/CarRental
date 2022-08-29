@@ -11,6 +11,9 @@ namespace CarRental.Application.Cars.Commands
     public class UpdateCar:IRequest<Car>
     {
         public int Id { get; set; }
-        public float price { get; set; }
+        public string Make { get; set; }
+        public string Model { get; set; }
+        public int year { get; set; }
+        public float PricePerDay { get; set; }
     }
 }

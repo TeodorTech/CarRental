@@ -19,11 +19,17 @@ namespace CarRental.Application.Users.Commands
 
         public Task<User> Handle(UpdateUser request, CancellationToken cancellationToken)
         {
-             var user = _userRepo.GetById(request.Id);
-            if (user == null) return null;
-            user.Age = request.Age;
-             _userRepo.Update(user);
-            return Task.FromResult(user);
+            var userToUpdate = new User
+            {
+                Id = request.Id,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+                Age = request.Age,
+                Email = request.Email,
+
+            };
+            _userRepo.UpdateUser(userToUpdate);
+            return Task.FromResult(userToUpdate);
         }
     }
 }
