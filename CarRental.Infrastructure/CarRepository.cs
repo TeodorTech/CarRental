@@ -16,25 +16,18 @@ namespace CarRental.Infrastrcuture
         {
             _context = context;
         }
-
         public async Task CreateCar(Car car)
         {
             await _context.Cars.AddAsync(car);
-            await _context.SaveChangesAsync();
         }
-
 
         public  void Delete(Car car)
         {
            _context.Cars.Remove(car);
-            _context.SaveChanges();
-             
         }
-
         public void  Update(Car car)
         {
              _context.Cars.Update(car);
-             _context.SaveChanges();
         }
 
         public Car GetCarById(int id)
@@ -42,7 +35,6 @@ namespace CarRental.Infrastrcuture
            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
             return car;
         }
-
         public List<Car> GetAll()
         {
             return _context.Cars.ToList();

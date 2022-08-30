@@ -1,6 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
-
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -12,16 +12,16 @@ namespace CarRental.Application.Users.Commands
 {
    public class CreateUserHandler:IRequestHandler<CreateUser,User>
     {
-        private readonly IUserRepository _userRepo;
-        public CreateUserHandler(IUserRepository userRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public CreateUserHandler(IUnitOfWork unitOfWork)
         {
-            _userRepo = userRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<User> Handle(CreateUser request, CancellationToken cancellationToken)
         {
             var user = new User(request.FirstName, request.LastName, request.Age,request.Email);
-            await _userRepo.CreateUser(user);
+            await _unitOfWork._userRepo.CreateUser(user);
             return user;
 
         }

@@ -21,19 +21,15 @@ namespace CarRental.Infrastrcuture
         public async Task CreateUser(User user)
         {
            await _context.User.AddAsync(user);
-            await _context.SaveChangesAsync();
-
         }
         public void UpdateUser(User user)
         {
             _context.User.Update(user);
-            _context.SaveChanges();
         }
 
         public void Delete(User user)
         {
             _context.User.Remove(user);
-            _context.SaveChanges();
         }
         public User GetById(int id)
         {

@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,15 @@ namespace CarRental.Application.Cars.Queries
 {
     public class GetCarbyIdHandler : IRequestHandler<GetCarById, Car>
     {
-        private readonly ICarRepository _carRepo;
-       public GetCarbyIdHandler(ICarRepository carRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public GetCarbyIdHandler(IUnitOfWork unitOfWork)
         {
-            _carRepo = carRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<Car> Handle(GetCarById request, CancellationToken cancellationToken)
         {
-            var car = _carRepo.GetCarById(request.CarId);
+            var car = _unitOfWork._carRepo.GetCarById(request.CarId);
             return Task.FromResult(car);
         }
     }

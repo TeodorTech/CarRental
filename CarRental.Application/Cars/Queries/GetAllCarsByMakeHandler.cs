@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,15 +12,15 @@ namespace CarRental.Application.Cars.Queries
 {
     public class GetAllCarsByMakeHandler : IRequestHandler<GetAllCarsByMake, List<Car>>
     {
-        private readonly ICarRepository _carRepo;
-        public GetAllCarsByMakeHandler(ICarRepository carRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public GetAllCarsByMakeHandler(IUnitOfWork unitOfWork)
         {
-            _carRepo = carRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<List<Car>> Handle(GetAllCarsByMake request, CancellationToken cancellationToken)
         {
-            var filteredList = _carRepo.GetAllCarsByMake(request.Make);
+            var filteredList = _unitOfWork._carRepo.GetAllCarsByMake(request.Make);
             return Task.FromResult(filteredList);
         }
     }

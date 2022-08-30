@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,17 @@ namespace CarRental.Application.Users.Commands
 {
     public class DeleteUserHandler : IRequestHandler<DeleteUser, User>
     {
-        private readonly IUserRepository _userRepo;
-        public DeleteUserHandler(IUserRepository userRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public DeleteUserHandler(IUnitOfWork unitOfWork)
         {
-            _userRepo = userRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<User> Handle(DeleteUser request, CancellationToken cancellationToken)
         {
-            var user = _userRepo.GetById(request.UserId);
+            var user = _unitOfWork._userRepo.GetById(request.UserId);
             if (user == null) return null;
-            _userRepo.Delete(user);
+            _unitOfWork._userRepo.Delete(user);
             return Task.FromResult(user);
         }
 

@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,10 @@ namespace CarRental.Application.Cars.Commands
 {
     public class UpdateCarHandler : IRequestHandler<UpdateCar, Car>
     {
-        private readonly ICarRepository _carRepo;
-        public UpdateCarHandler(ICarRepository carRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public UpdateCarHandler(IUnitOfWork unitOfWork)
         {
-            _carRepo = carRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
@@ -26,7 +27,7 @@ namespace CarRental.Application.Cars.Commands
                 Model = request.Model,
                 PricePerDay = request.PricePerDay,
             };
-            _carRepo.Update(carToUpdate);
+            _unitOfWork._carRepo.Update(carToUpdate);
             return Task.FromResult(carToUpdate);
         }
     }

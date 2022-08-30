@@ -11,6 +11,7 @@ using CarRental.Application.Users.Commands;
 using CarRental.Application.Users.Queries;
 using CarRental.Domain;
 using CarRental.Domain.Exceptions;
+using CarRental.Domain.Interfaces;
 using CarRental.Domain.Interfaces.Repositories;
 using CarRental.Infrastrcuture;
 using CarRental.Infrastructure;
@@ -41,37 +42,24 @@ namespace CarRental.Program
                 .AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;"))
                 .AddScoped<IUserRepository, UserRepository>()
                 .AddScoped<IBookingRepository, BookingRepository>()
+                .AddScoped<IUnitOfWork,UnitOfWork>()
                 .AddMediatR(typeof(CreateCarHandler))
                 .BuildServiceProvider();
             var mediator = diContainer.GetRequiredService<IMediator>();
-            /*   var newcar = await mediator.Send(new CreateCar
-               {
-
-                   Make = "Dacia",
-                   Model = "Logan",
-                   Year = 2005,
-                   PricePerDay = 100
-               });*/
-            /*await mediator.Send(new DeleteCar { CarId = 1 });*/
-            /*await mediator.Send(new UpdateCar { Id = 1,Make="Dacia",Model="Logan",PricePerDay=1 });*/
-            /*    var newUser = await mediator.Send(new CreateUser
+            /*    var newcar = await mediator.Send(new CreateCar
                 {
-                    FirstName = "Alex",
-                    LastName = "Dinca",
-                    Age = 26,
-                    Email = "alex.dinca@yahoo.com"
+
+                    Make = "Pagani",
+                    Model = "Zonda",
+                    Year = 2008,
+                    PricePerDay = 1
                 });*/
-            /*await mediator.Send(new DeleteUser { UserId = 1 });*/
-            var allCars = mediator.Send(new GetAllCars { });
-            var filteredList = mediator.Send(new GetAllCarsByMake { Make="BMW"});
-            var expensivecars = mediator.Send(new GetAllCarsByPrice { Price = 400 });
-            var selectedcar = mediator.Send(new GetCarById { CarId = 4 });
-            
-         /*   foreach(Car car in allCars)
-            {
-                var newcar = car;
-            }
-           */
+           /* await mediator.Send(new DeleteCar { CarId = 14 });*/
+            await mediator.Send(new UpdateCar { Id = 13, Make = "Dacia", Model = "Logan", PricePerDay = 1 });
+
+
+
+
             Console.WriteLine();
             
 

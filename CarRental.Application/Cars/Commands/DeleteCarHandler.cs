@@ -1,5 +1,6 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -11,17 +12,18 @@ namespace CarRental.Application.Cars.Commands
 {
     public class DeleteCarHandler : IRequestHandler<DeleteCar, Car>
     {
-        private readonly ICarRepository _carRepo;
-        public DeleteCarHandler(ICarRepository carRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public DeleteCarHandler(IUnitOfWork unitOfWork )
         {
-            _carRepo = carRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public  Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
-            var car = _carRepo.GetCarById(request.CarId);
+            var car = _unitOfWork._carRepo.GetCarById(request.CarId);
             if (car == null) return null;
-             _carRepo.Delete(car);
+             _unitOfWork._carRepo.Delete(car);
+            _unitOfWork.Save();
             return Task.FromResult(car);
         }
     }

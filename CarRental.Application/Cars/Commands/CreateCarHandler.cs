@@ -1,6 +1,7 @@
 ﻿using CarRental.Application.Commands;
 using CarRental.Application.Repositories;
 using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using CarRental.Domain.Interfaces.Repositories;
 using MediatR;
 using System;
@@ -13,17 +14,17 @@ namespace CarRental.Application.Cars.Commands
 {
     public class CreateCarHandler : IRequestHandler<CreateCar, Car>
     {
-        private readonly ICarRepository _carRepo;
-        public CreateCarHandler(ICarRepository carRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public CreateCarHandler(IUnitOfWork unitOfWork)
         {
-            _carRepo = carRepo;
+            _unitOfWork = unitOfWork;
         }
 
         public async Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
         {
             var car = new Car(request.Make,request.Model, request.Year, request.PricePerDay);
-            await _carRepo.CreateCar(car);
-           
+            await _unitOfWork._carRepo.CreateCar(car);
+            await _unitOfWork.Save();
             return car;
         }
     }
