@@ -22,7 +22,6 @@ namespace CarRental.Application.Cars.Queries
     {
             var listOfCars = _carRepo.GetAll();
             return Task.FromResult(listOfCars);
-
     }
 }
 }

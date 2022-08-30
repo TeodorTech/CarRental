@@ -13,8 +13,10 @@ namespace CarRental.Application.Repositories
         public Task CreateCar(Car car);
        
         public void Delete(Car car);
-        public  Car GetById(int id);
+        public  Car GetCarById(int id);
         public List<Car> GetAll();
+        public List<Car> GetAllCarsByMake(string make);
+        public List<Car> GetAllCarsByPrice(int price);
         public void Update(Car car);
 
     }

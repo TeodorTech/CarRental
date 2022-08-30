@@ -2,6 +2,7 @@
 using CarRental.Application;
 using CarRental.Application.Bookings.Command;
 using CarRental.Application.Cars.Commands;
+using CarRental.Application.Cars.Queries;
 using CarRental.Application.Commands;
 using CarRental.Application.Queries;
 using CarRental.Application.Repositories;
@@ -53,62 +54,26 @@ namespace CarRental.Program
                });*/
             /*await mediator.Send(new DeleteCar { CarId = 1 });*/
             /*await mediator.Send(new UpdateCar { Id = 1,Make="Dacia",Model="Logan",PricePerDay=1 });*/
-        /*    var newUser = await mediator.Send(new CreateUser
-            {
-                FirstName = "Alex",
-                LastName = "Dinca",
-                Age = 26,
-                Email = "alex.dinca@yahoo.com"
-            });*/
+            /*    var newUser = await mediator.Send(new CreateUser
+                {
+                    FirstName = "Alex",
+                    LastName = "Dinca",
+                    Age = 26,
+                    Email = "alex.dinca@yahoo.com"
+                });*/
             /*await mediator.Send(new DeleteUser { UserId = 1 });*/
-            await mediator.Send(new UpdateUser
+            var allCars = mediator.Send(new GetAllCars { });
+            var filteredList = mediator.Send(new GetAllCarsByMake { Make="BMW"});
+            var expensivecars = mediator.Send(new GetAllCarsByPrice { Price = 400 });
+            var selectedcar = mediator.Send(new GetCarById { CarId = 4 });
+            
+         /*   foreach(Car car in allCars)
             {
-                Id = 3,
-                FirstName = "Alex",
-                LastName = "Dinca",
-                Age = 26,
-                Email = "newAlex.newDinca@yahoo.com"
-
-            });
-
-            /*var user1 = await mediator.Send(new CreateUser
-            {
-                FirstName = "Johhny",
-                LastName = "Bravo",
-                Age = 28
-            });
-            var user2 = await mediator.Send(new CreateUser
-            {
-                FirstName = "Johhny",
-                LastName = "Cash",
-                Age = 20
-            });
-            var user3 = await mediator.Send(new CreateUser
-            {
-                FirstName = "Miki",
-                LastName = "Mouse",
-                Age = 30
-            });
-
-            var newListOfUsers = await mediator.Send(new GetAllUsers { });
-
-            var newBooking = await mediator.Send(new CreateBooking
-            {
-                userId = 1,
-                carId=2
-            });
-
-            var update = await mediator.Send(new UpdateCar
-            {
-                Id = 3,
-                PricePerDay = 500
-            });
-            var newListOfCars = await mediator.Send(new GetAllCars { });*/
+                var newcar = car;
+            }
+           */
             Console.WriteLine();
             
-
-
-
 
             /*  Car selctedCarAlex = userAlex.SelectCar();
               userAlex.PayCar(selctedCarAlex);

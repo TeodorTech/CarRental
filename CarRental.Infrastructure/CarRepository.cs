@@ -37,15 +37,25 @@ namespace CarRental.Infrastrcuture
              _context.SaveChanges();
         }
 
-        public Car GetById(int id)
+        public Car GetCarById(int id)
         {
-           var car = _context.Cars.FirstOrDefault(c => c.Id == id);
+           var car = _context.Cars.SingleOrDefault(c => c.Id == id);
             return car;
         }
 
         public List<Car> GetAll()
         {
             return _context.Cars.ToList();
+        }
+        public List<Car> GetAllCarsByMake(string make)
+        {
+            var filteredList = _context.Cars.Where(c => c.Make == make).ToList();
+            return filteredList;
+        }
+        public List<Car> GetAllCarsByPrice(int price)
+        {
+            var filteredList = _context.Cars.Where(c=>c.PricePerDay>=price).ToList();
+            return filteredList;
         }
     }
 }

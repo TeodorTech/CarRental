@@ -40,6 +40,16 @@ namespace CarRental.Infrastrcuture
             var user = _context.User.SingleOrDefault(u => u.Id == id);
             return user;
         }
+        public List<User> GetByAge(int age)
+        {
+            var filtredList= _context.User.Where(u => u.Age > age).ToList();
+            return filtredList;
+        }
+        public List<User> GetByCity(string city)
+        {
+            var cityList= _context.User.Where(u=>u.City==city).ToList();
+            return cityList;
+        }
         public List<User> GetAll()
         {
             return _context.User.ToList();

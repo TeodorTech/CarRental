@@ -15,6 +15,7 @@ namespace CarRental.Domain
         public string LastName { get; set; }
         public int Age { get; set; }
         public string Email { get; set; }
+        public string City { get; set; }
         public ICollection<Booking> Booking { get; set; }
 
         public override string ToString() => $"{FirstName},{LastName},{Age}";

@@ -20,20 +20,14 @@ namespace CarRental.Domain
 
         }
 
-        public Car( string make, string model, int year, float pricePerDay)
+        public Car(string make, string model, int year, float pricePerDay)
         {
-           
+
             this.Year = year;
             this.Make = make;
             this.Model = model;
             this.PricePerDay = pricePerDay;
 
-        }
-
-        public void SetUpdate(Car car)
-        {
-            Make = car.Make;
-            PricePerDay = car.PricePerDay;
         }
 
 

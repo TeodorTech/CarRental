@@ -15,6 +15,8 @@ namespace CarRental.Application.Repositories
         public void Delete(User user);
 
         public User GetById(int id);
+        public List<User> GetByAge(int age);
+        public List<User> GetByCity(string city);
         public List<User> GetAll();
 
     }

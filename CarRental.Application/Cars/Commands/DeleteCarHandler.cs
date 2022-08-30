@@ -19,7 +19,7 @@ namespace CarRental.Application.Cars.Commands
 
         public  Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
-            var car = _carRepo.GetById(request.CarId);
+            var car = _carRepo.GetCarById(request.CarId);
             if (car == null) return null;
              _carRepo.Delete(car);
             return Task.FromResult(car);
