@@ -46,16 +46,17 @@ namespace CarRental.Program
                 .AddMediatR(typeof(CreateCarHandler))
                 .BuildServiceProvider();
             var mediator = diContainer.GetRequiredService<IMediator>();
-            /*    var newcar = await mediator.Send(new CreateCar
-                {
+            /*  var newcar = await mediator.Send(new CreateCar
+              {
 
-                    Make = "Pagani",
-                    Model = "Zonda",
-                    Year = 2008,
-                    PricePerDay = 1
-                });*/
-           /* await mediator.Send(new DeleteCar { CarId = 14 });*/
-            await mediator.Send(new UpdateCar { Id = 13, Make = "Dacia", Model = "Logan", PricePerDay = 1 });
+                  Make = "Pagani",
+                  Model = "Zonda",
+                  Year = 2008,
+                  PricePerDay = 1
+              });*/
+            /* await mediator.Send(new DeleteCar { CarId = 14 });*/
+            /*await mediator.Send(new UpdateCar { Id = 13, Make = "Dacia", Model = "Logan", PricePerDay = 1 });*/
+            var result = await mediator.Send(new GetCarById { CarId = 3 });
 
 
 

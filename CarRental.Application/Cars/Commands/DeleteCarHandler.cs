@@ -18,13 +18,13 @@ namespace CarRental.Application.Cars.Commands
             _unitOfWork = unitOfWork;
         }
 
-        public  Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
+        public  async Task<Car> Handle(DeleteCar request, CancellationToken cancellationToken)
         {
             var car = _unitOfWork._carRepo.GetCarById(request.CarId);
             if (car == null) return null;
              _unitOfWork._carRepo.Delete(car);
-            _unitOfWork.Save();
-            return Task.FromResult(car);
+            await _unitOfWork.Save();
+            return car;
         }
     }
 }

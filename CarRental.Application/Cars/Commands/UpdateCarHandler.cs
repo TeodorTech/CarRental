@@ -18,17 +18,19 @@ namespace CarRental.Application.Cars.Commands
             _unitOfWork = unitOfWork;
         }
 
-        public Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
+        public async Task<Car> Handle(UpdateCar request, CancellationToken cancellationToken)
         {
             var carToUpdate = new Car
             {
                 Id = request.Id,
                 Make=request.Make,
                 Model = request.Model,
+                Year = request.Year,
                 PricePerDay = request.PricePerDay,
             };
             _unitOfWork._carRepo.Update(carToUpdate);
-            return Task.FromResult(carToUpdate);
+            await _unitOfWork.Save();
+            return carToUpdate;
         }
     }
 }
