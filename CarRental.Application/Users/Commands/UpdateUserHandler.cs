@@ -18,7 +18,7 @@ namespace CarRental.Application.Users.Commands
             _unitOfWork = unitOfWork;
         }
 
-        public Task<User> Handle(UpdateUser request, CancellationToken cancellationToken)
+        public async Task<User> Handle(UpdateUser request, CancellationToken cancellationToken)
         {
             var userToUpdate = new User
             {
@@ -26,11 +26,13 @@ namespace CarRental.Application.Users.Commands
                 FirstName = request.FirstName,
                 LastName = request.LastName,
                 Age = request.Age,
+                City = request.City,
                 Email = request.Email,
 
             };
-            _unitOfWork._userRepo.UpdateUser(userToUpdate);
-            return Task.FromResult(userToUpdate);
+             _unitOfWork._userRepo.UpdateUser(userToUpdate);
+            await _unitOfWork.Save();
+            return userToUpdate;
         }
     }
 }

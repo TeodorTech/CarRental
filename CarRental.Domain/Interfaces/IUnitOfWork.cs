@@ -13,5 +13,6 @@ namespace CarRental.Domain.Interfaces
         public IUserRepository _userRepo { get; }
 
         Task Save();
+        
     }
 }

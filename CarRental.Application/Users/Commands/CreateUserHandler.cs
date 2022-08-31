@@ -20,8 +20,9 @@ namespace CarRental.Application.Users.Commands
 
         public async Task<User> Handle(CreateUser request, CancellationToken cancellationToken)
         {
-            var user = new User(request.FirstName, request.LastName, request.Age,request.Email);
+            var user = new User(request.FirstName, request.LastName, request.Age,request.City,request.Email);
             await _unitOfWork._userRepo.CreateUser(user);
+            await _unitOfWork.Save();
             return user;
 
         }
