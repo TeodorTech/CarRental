@@ -48,6 +48,7 @@ namespace CarRental.Api.Controllers
             var mappedCar = _mapper.Map<CarGetDto>(newCar);
             return Ok(mappedCar);
 
+
         }
         [HttpDelete]
         public async Task<IActionResult> DeleteCar([FromQuery]int id)
