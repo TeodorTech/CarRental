@@ -1,6 +1,7 @@
 ﻿using CarRental.Application.Repositories;
 using CarRental.Domain;
 using CarRental.Infrastructure;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,8 +13,10 @@ namespace CarRental.Infrastrcuture
     public class CarRepository : ICarRepository
     {
         private readonly DataContext _context;
-        public CarRepository(DataContext context)
+        private readonly ILogger<CarRepository> _logger;
+        public CarRepository(DataContext context,ILogger<CarRepository> logger)
         {
+            _logger = logger;
             _context = context;
         }
         public async Task CreateCar(Car car)
@@ -24,6 +27,7 @@ namespace CarRental.Infrastrcuture
         public  void Delete(Car car)
         {
            _context.Cars.Remove(car);
+           
         }
         public void  Update(Car car)
         {
@@ -33,20 +37,25 @@ namespace CarRental.Infrastrcuture
         public Car GetCarById(int id)
         {
            var car = _context.Cars.SingleOrDefault(c => c.Id == id);
+            _logger.LogInformation($"The car with ID {id} was retrived");
             return car;
         }
         public List<Car> GetAll()
         {
+            _logger.LogInformation($"The list of cars has been retrived");
             return _context.Cars.ToList();
+
         }
         public List<Car> GetAllCarsByMake(string make)
         {
             var filteredList = _context.Cars.Where(c => c.Make == make).ToList();
+            _logger.LogInformation($"List of {make} was retrived");
             return filteredList;
         }
         public List<Car> GetAllCarsByPrice(int price)
         {
             var filteredList = _context.Cars.Where(c=>c.PricePerDay>=price).ToList();
+            _logger.LogInformation($"List of cars higher than {price} was retrived");
             return filteredList;
         }
     }

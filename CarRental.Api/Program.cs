@@ -39,7 +39,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseMyMiddleware();
 app.UseAuthorization();
 
 app.MapControllers();

@@ -6,6 +6,7 @@ using CarRental.Application.Commands;
 using CarRental.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Moq;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,7 @@ namespace CarRental.Tests
     {
         private readonly Mock<IMediator> _mockMediator = new Mock<IMediator>();
         private readonly Mock<IMapper> _mockMapper = new Mock<IMapper>();
+        private readonly Mock<ILogger<CarController>> _mockLogger = new Mock<ILogger<CarController>>();
         [Fact]
         public async Task GetCarById_ShouldReturnCar()
         {
@@ -27,7 +29,7 @@ namespace CarRental.Tests
                 .Setup(m => m.Send(It.IsAny<GetCarById>(), It.IsAny<CancellationToken>()))
                 .Verifiable();
             //Act
-            var controller = new CarController(_mockMediator.Object,_mockMapper.Object);
+            var controller = new CarController(_mockMediator.Object,_mockMapper.Object, _mockLogger.Object);
             await controller.GetCarById(2);
             //Assert
             _mockMediator.Verify(m => m.Send(It.IsAny<GetCarById>(), It.IsAny<CancellationToken>()), Times.Once());
@@ -53,7 +55,7 @@ namespace CarRental.Tests
 
                       });
               });
-            var controller = new CarController(_mockMediator.Object, _mockMapper.Object);
+            var controller = new CarController(_mockMediator.Object, _mockMapper.Object, _mockLogger.Object);
             await controller.GetCarById(2);
             Assert.Equal(carId, 2);
         }
@@ -61,7 +63,7 @@ namespace CarRental.Tests
 
 
         [Fact]
-        public async Task CallPost_ShouldReturnCarPutPostDto()
+        public async Task CreateCar_ShouldReturnCarPutPostDto()
         {
             //Arrange
             var createCarDto = new CarPutPostDto
@@ -103,7 +105,7 @@ namespace CarRental.Tests
                     PricePerDay = 200
                 });
 
-            var controller = new CarController(_mockMediator.Object, _mockMapper.Object);
+            var controller = new CarController(_mockMediator.Object, _mockMapper.Object, _mockLogger.Object);
             //Act
             var result = controller.CreateCar(createCarDto);
             var OkResult = result.Result as OkObjectResult;

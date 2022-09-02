@@ -9,29 +9,39 @@ using Microsoft.AspNetCore.Mvc;
 namespace CarRental.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/user")]
     public class UserController:ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
-        public UserController(IMediator mediator, IMapper mapper)
+        private readonly ILogger<UserController> _logger;
+        public UserController(IMediator mediator, IMapper mapper, ILogger<UserController> logger)
         {
             _mapper = mapper;
             _mediator = mediator;
+            _logger = logger;
         }
         [HttpGet]
-        [Route("{index}")]
-        public async Task<IActionResult> GetById([FromRoute]int index)
+        [Route("{userId}")]
+        public async Task<IActionResult> GetById([FromRoute]int userId)
         {
-            var result = await _mediator.Send(new GetUserById { UserId = index });
+            _logger.LogInformation("Retrieving the user by Id");
+            var result = await _mediator.Send(new GetUserById { UserId = userId });
+            if (result == null)
+            {
+                _logger.LogWarning("The Id could not be found");
+                return null;
+            }
             var mappedResult = _mapper.Map<UserGetDto>(result);
             return Ok(mappedResult);
         }
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
+            _logger.LogInformation("Retrieving the list of cars");
             var result = await _mediator.Send(new GetAllUsers());
             var mappedResult = _mapper.Map<List<UserGetDto>>(result);
+            _logger.LogInformation($"There are {result.Count} users in the database");
             return Ok(mappedResult);
         }
         [HttpPost]
@@ -40,6 +50,7 @@ namespace CarRental.Api.Controllers
             var command = _mapper.Map<CreateUser>(user);
             var result = await _mediator.Send(command);
             var mappedResult = _mapper.Map<UserGetDto>(result);
+            _logger.LogInformation($"A new user was created at {DateTime.Now.TimeOfDay}");
             return Ok(mappedResult);
         }
         [HttpPut]
@@ -55,13 +66,15 @@ namespace CarRental.Api.Controllers
                 Email = user.Email,
 
             };
-             await _mediator.Send(command);
+            _logger.LogInformation("Request with the updated user was sent!");
+            await _mediator.Send(command);
             return NoContent();
         }
         [HttpDelete]
         public async Task<IActionResult> RemoveUser([FromQuery]int id)
         {
             var deleteUser = await _mediator.Send(new DeleteUser { UserId = id });
+            _logger.LogInformation("A user was deleted from the list");
             return NoContent();
         }
     }
