@@ -156,3 +156,4 @@ D:\CarRental\CarRental.Tests\bin\Debug\net6.0\CarRental.Infrastructure.dll
 D:\CarRental\CarRental.Tests\bin\Debug\net6.0\CarRental.Api.pdb
 D:\CarRental\CarRental.Tests\bin\Debug\net6.0\CarRental.Application.pdb
 D:\CarRental\CarRental.Tests\bin\Debug\net6.0\CarRental.Infrastructure.pdb
+D:\CarRental\CarRental.Tests\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll

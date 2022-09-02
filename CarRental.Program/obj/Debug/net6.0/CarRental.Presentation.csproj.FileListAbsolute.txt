@@ -72,3 +72,8 @@ D:\CarRental\CarRental.Program\bin\Debug\net6.0\Moq.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\System.Diagnostics.EventLog.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.Configuration.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.Console.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll

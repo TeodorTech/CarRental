@@ -101,6 +101,116 @@ namespace CarRental.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("User");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 23,
+                            City = "Bucuresti",
+                            Email = "teo.steaua07@yahoo.com",
+                            FirstName = "Teodor",
+                            LastName = "Nicolau"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 24,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Ioana",
+                            LastName = "Dinca"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Age = 24,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Alex",
+                            LastName = "Dinca"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Age = 21,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Andrei",
+                            LastName = "Ion"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Age = 45,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "George",
+                            LastName = "Enescu"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Age = 38,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Cristiano",
+                            LastName = "Ronaldo"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Age = 99,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Leonardo",
+                            LastName = "Davinci"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Age = 49,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Brad",
+                            LastName = "Pitt"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Age = 45,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Megan",
+                            LastName = "Fox"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Age = 50,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "barack",
+                            LastName = "Obama"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Age = 30,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "Steph",
+                            LastName = "Curry"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Age = 35,
+                            City = "Constanta",
+                            Email = "ioana.dinca@yahoo.com",
+                            FirstName = "James",
+                            LastName = "LeBron"
+                        });
                 });
 
             modelBuilder.Entity("CarRental.Domain.Booking", b =>
