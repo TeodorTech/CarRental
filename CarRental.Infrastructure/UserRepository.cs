@@ -25,9 +25,9 @@ namespace CarRental.Infrastrcuture
         {
            await _context.User.AddAsync(user);
         }
-        public void UpdateUser(User user)
+        public async Task UpdateUser(User user)
         {
-            _context.User.Update(user);
+           _context.User.Update(user);
         }
 
         public void Delete(User user)

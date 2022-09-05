@@ -29,6 +29,7 @@ builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(build
 builder.Services.AddMediatR(typeof(CreateCarHandler));
 builder.Services.AddAutoMapper(typeof(Assembly));
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -45,3 +46,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+public partial class Program { }

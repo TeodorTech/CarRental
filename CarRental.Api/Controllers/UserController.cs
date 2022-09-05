@@ -10,7 +10,7 @@ namespace CarRental.Api.Controllers
 {
     [ApiController]
     [Route("api/user")]
-    public class UserController:ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
         private readonly IMapper _mapper;
@@ -23,7 +23,7 @@ namespace CarRental.Api.Controllers
         }
         [HttpGet]
         [Route("{userId}")]
-        public async Task<IActionResult> GetById([FromRoute]int userId)
+        public async Task<IActionResult> GetById([FromRoute] int userId)
         {
             _logger.LogInformation("Retrieving the user by Id");
             var result = await _mediator.Send(new GetUserById { UserId = userId });
@@ -54,7 +54,7 @@ namespace CarRental.Api.Controllers
             return Ok(mappedResult);
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateUser(int id,[FromBody] UserPutPostDto user)
+        public async Task<IActionResult> UpdateUser([FromQuery] int id,[FromBody] UserPutPostDto user)
         {
             var command = new UpdateUser
             {
@@ -67,13 +67,14 @@ namespace CarRental.Api.Controllers
 
             };
             _logger.LogInformation("Request with the updated user was sent!");
-            await _mediator.Send(command);
-            return NoContent();
+            var result= await _mediator.Send(command);
+            return Ok(result);
         }
         [HttpDelete]
-        public async Task<IActionResult> RemoveUser([FromQuery]int id)
+        [Route("{userId}")]
+        public async Task<IActionResult> RemoveUser([FromRoute]int userId)
         {
-            var deleteUser = await _mediator.Send(new DeleteUser { UserId = id });
+            var deleteUser = await _mediator.Send(new DeleteUser { UserId = userId });
             _logger.LogInformation("A user was deleted from the list");
             return NoContent();
         }

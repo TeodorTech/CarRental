@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarRental.Api.Controllers;
 using CarRental.Api.DTO;
+using CarRental.Application.Cars.Commands;
 using CarRental.Application.Cars.Queries;
 using CarRental.Application.Commands;
 using CarRental.Domain;
@@ -61,7 +62,6 @@ namespace CarRental.Tests
         }
 
 
-
         [Fact]
         public async Task CreateCar_ShouldReturnCarPutPostDto()
         {
@@ -115,6 +115,45 @@ namespace CarRental.Tests
 
             //Assert
             Assert.Equal(createCarDto.Make,carGetDto.Make);
+        }
+        [Fact]
+        public async Task UpdateCar_ShouldChangeFieldsOfCar()
+        {
+            //Assemble
+            int updateCarId = 1;
+            var updateCarDto = new CarPutPostDto
+            {
+                Make = "Skoda",
+                Model = "Octavia",
+                Year = 2016,
+                PricePerDay = 200
+            };
+            var updateCar = new UpdateCar
+            {   Id= updateCarId,
+                Make = "Skoda",
+                Model = "Octavia",
+                Year = 2016,
+                PricePerDay = 200
+            };
+            _mockMediator
+                .Setup(m => m.Send(It.IsAny<UpdateCar>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new Car
+                {
+                    Id = updateCarId,
+                    Make = "Skoda",
+                    Model = "Octavia",
+                    Year = 2016,
+                    PricePerDay = 200
+                });
+            var controller = new CarController(_mockMediator.Object, _mockMapper.Object, _mockLogger.Object);
+            
+            //Act
+            var result = controller.UpdateCar(updateCarId,updateCarDto);
+            var okResult = result.Result as OkObjectResult;
+            var updatedCarResult = okResult.Value as Car;
+
+            //Assert
+            Assert.Equal(updateCar.PricePerDay, updatedCarResult.PricePerDay);
         }
     }
 }

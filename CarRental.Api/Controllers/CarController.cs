@@ -68,7 +68,7 @@ namespace CarRental.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCar(int id, [FromBody] CarPutPostDto car)
+        public async Task<IActionResult> UpdateCar([FromQuery] int id, [FromBody] CarPutPostDto car)
         {
             var command = new UpdateCar
             {
@@ -81,7 +81,7 @@ namespace CarRental.Api.Controllers
             _logger.LogInformation("Request with the updated car was sent!");
             var updatedCar = await _mediator.Send(command);
             _logger.LogInformation("The car was updated");
-            return NoContent();
+            return Ok(updatedCar);
         }
 
     }

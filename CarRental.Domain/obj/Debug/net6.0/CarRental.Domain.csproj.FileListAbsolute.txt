@@ -24,3 +24,6 @@ D:\CarRental\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.pdb
 D:\CarRental\CarRental.Domain\obj\Debug\net6.0\ref\CarRental.Domain.dll
 D:\CarRental\CarRental.Domain\bin\Debug\net6.0\CarRental.Domain.runtimeconfig.json
 D:\CarRental\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.genruntimeconfig.cache
+D:\CarRental\CarRental.Domain\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\CarRental\CarRental.Domain\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\CarRental\CarRental.Domain\obj\Debug\net6.0\CarRental.Domain.csproj.CopyComplete

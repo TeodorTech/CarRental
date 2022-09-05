@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarRental.Api.Controllers;
 using CarRental.Api.DTO;
+using CarRental.Application.Users;
 using CarRental.Application.Users.Commands;
 using CarRental.Application.Users.Queries;
 using CarRental.Domain;
@@ -50,10 +51,10 @@ namespace CarRental.Tests
                       {
                           Id = q.UserId,
                           FirstName = "Theo",
-                          LastName ="Nikki",
-                          Age=25,
-                          City="Bucuresti",
-                         Email="teo.nik@gmail.com"
+                          LastName = "Nikki",
+                          Age = 25,
+                          City = "Bucuresti",
+                          Email = "teo.nik@gmail.com"
 
                       });
               });
@@ -116,6 +117,49 @@ namespace CarRental.Tests
 
             //Assert
             Assert.Equal(createUserDto.FirstName, userGetDto.FirstName);
+        }
+
+        [Fact]
+        public async Task UpdateUser_ShouldChangeUserFields()
+        {   //Assemble
+            int updateUserId = 1;
+            var userToUpdateDto = new UserPutPostDto
+            {
+                FirstName = "Theo",
+                LastName = "Nikki",
+                Age = 25,
+                City = "Bucuresti",
+                Email = "teo.nik@gmail.com"
+            };
+            var userToUpdate = new UpdateUser
+            {
+                Id = updateUserId,
+                FirstName = "Theo",
+                LastName = "Nikki",
+                Age = 25,
+                City = "Bucuresti",
+                Email = "teo.nik@gmail.com"
+            };
+            _mockMediator
+                .Setup(m => m.Send(It.IsAny<UpdateUser>(), It.IsAny<CancellationToken>()))
+                .ReturnsAsync(new User
+                {
+                    Id = updateUserId,
+                    FirstName = "Theo",
+                    LastName = "Nikki",
+                    Age = 25,
+                    City = "Bucuresti",
+                    Email = "teo.nik@gmail.com"
+                });
+            var controller = new UserController(_mockMediator.Object, _mockMapper.Object, _mockLogger.Object);
+            
+            //Act
+            var result = controller.UpdateUser(updateUserId,userToUpdateDto);
+            var okResult = result.Result as OkObjectResult;
+            var userUpdate = okResult.Value as User;
+
+            //Assert
+            Assert.Equal(userToUpdate.Email, userUpdate.Email);
         }
     }
 }

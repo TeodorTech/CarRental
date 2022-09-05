@@ -10,7 +10,7 @@ namespace CarRental.Application.Repositories
    public interface IUserRepository
     {
         public Task CreateUser(User user);
-        public void UpdateUser(User user);
+        public Task UpdateUser(User user);
         
         public void Delete(User user);
 
