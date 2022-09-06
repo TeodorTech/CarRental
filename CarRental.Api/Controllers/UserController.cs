@@ -30,7 +30,7 @@ namespace CarRental.Api.Controllers
             if (result == null)
             {
                 _logger.LogWarning("The Id could not be found");
-                return null;
+                return NotFound();
             }
             var mappedResult = _mapper.Map<UserGetDto>(result);
             return Ok(mappedResult);
@@ -54,12 +54,19 @@ namespace CarRental.Api.Controllers
             return Ok(mappedResult);
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateUser([FromQuery] int id,[FromBody] UserPutPostDto user)
+        [Route("{userId}")]
+        public async Task<IActionResult> UpdateUser([FromRoute] int userId, [FromBody] UserPutPostDto user)
         {
+            var toUpdate = await _mediator.Send(new GetUserById { UserId = userId });
+            if (toUpdate == null)
+            {
+                _logger.LogWarning("The Id could not be found");
+                return NotFound();
+            }
             var command = new UpdateUser
             {
-                Id = id,
-                FirstName = user.FirstName,
+                Id = userId,
+                FirstName= user.FirstName,
                 LastName = user.LastName,
                 Age = user.Age,
                 City = user.City,
@@ -68,6 +75,7 @@ namespace CarRental.Api.Controllers
             };
             _logger.LogInformation("Request with the updated user was sent!");
             var result= await _mediator.Send(command);
+            
             return Ok(result);
         }
         [HttpDelete]
@@ -75,6 +83,11 @@ namespace CarRental.Api.Controllers
         public async Task<IActionResult> RemoveUser([FromRoute]int userId)
         {
             var deleteUser = await _mediator.Send(new DeleteUser { UserId = userId });
+            if (deleteUser == null)
+            {
+                _logger.LogWarning("The Id could not be found");
+                return NotFound();
+            }
             _logger.LogInformation("A user was deleted from the list");
             return NoContent();
         }

@@ -1,4 +1,5 @@
 ﻿using CarRental.Api.DTO;
+using CarRental.Application.Users;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System;
@@ -27,6 +28,14 @@ namespace CarRental.IntegrationTests
             var client = _factory.CreateClient();
             var response = await client.GetAsync("api/user/1");
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+
+        [Fact]
+        public async Task GetById_ShouldRetunr404IfNotFound()
+        {
+            var client = _factory.CreateClient();
+            var response = await client.GetAsync("api/user/45");
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         }
 
 
@@ -61,6 +70,44 @@ namespace CarRental.IntegrationTests
             var client = _factory.CreateClient();
             var response = await client.DeleteAsync("api/user/2");
             Assert.True(response.StatusCode== HttpStatusCode.NoContent);
+        }
+
+        [Fact]
+        public async Task RemoveUser_ShouldReturn404IfNotFound()
+        {
+            var client = _factory.CreateClient();
+            var response = await client.GetAsync("api/user/45");
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
+        }
+        [Fact]
+        public async Task UpdateUser_ShouldReturnResponse()
+        {
+            var updateUser = new UpdateUser
+            {
+                FirstName = "Roberto",
+                LastName = "Carlos",
+                Age = 45,
+                City = "Rio",
+                Email = "roberto,crlos"
+            };
+            var client = _factory.CreateClient();
+            var response = await client.PutAsync("api/user/1", new StringContent(JsonConvert.SerializeObject(updateUser), Encoding.UTF8, "application/json"));
+            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        }
+        [Fact]
+        public async Task UpdateUser_ShouldReturn404ResponseIfIdNotFound()
+        {
+            var updateUser = new UpdateUser
+            {
+                FirstName = "Roberto",
+                LastName = "Carlos",
+                Age = 45,
+                City = "Rio",
+                Email = "roberto,crlos"
+            };
+            var client = _factory.CreateClient();
+            var response = await client.PutAsync("api/user/45", new StringContent(JsonConvert.SerializeObject(updateUser), Encoding.UTF8, "application/json"));
+            Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
         }
 
 

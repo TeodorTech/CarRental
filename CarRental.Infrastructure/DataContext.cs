@@ -49,6 +49,13 @@ namespace CarRental.Infrastructure
                 new User { Id = 12, FirstName = "James", LastName = "LeBron", Age = 35, Email = "lebron.james@yahoo.com", City = "Constanta" }
 
             );
+            builder.Entity<Car>().HasData(
+                new Car { Id = 1, Make = "Porche", Model = "911", Year = 2008, PricePerDay = 350 },
+                new Car { Id = 2, Make = "Porche", Model = "Cayene", Year = 2020, PricePerDay = 500 },
+                new Car { Id = 3, Make = "Porche", Model = "Panamera", Year = 2016, PricePerDay = 450 },
+                new Car { Id = 4, Make = "Porche", Model = "918", Year = 2021, PricePerDay = 1050 }
+
+                );
         }
 
     }

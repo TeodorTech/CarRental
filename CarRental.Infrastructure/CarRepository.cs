@@ -29,7 +29,7 @@ namespace CarRental.Infrastrcuture
            _context.Cars.Remove(car);
            
         }
-        public void  Update(Car car)
+        public async Task Update(Car car)
         {
              _context.Cars.Update(car);
         }

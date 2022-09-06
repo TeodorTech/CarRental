@@ -23,17 +23,17 @@ namespace CarRental.Api.Controllers
             _mediator = mediator;
             _logger = logger;
         }
-    
+
         [HttpGet]
         [Route("{carId}")]
-        public async Task<IActionResult> GetCarById(int carId)
+        public async Task<IActionResult> GetCarById([FromRoute] int carId)
         {
             _logger.LogInformation("Retrieving the car by Id");
             var result = await _mediator.Send(new GetCarById { CarId = carId });
             if (result == null)
             {
                 _logger.LogWarning("The Id could not be found");
-                return null;
+                return NotFound();
             }
             var mappedResult = _mapper.Map<CarGetDto>(result);
             return Ok(mappedResult);
@@ -60,19 +60,28 @@ namespace CarRental.Api.Controllers
         }
 
         [HttpDelete]
-        public async Task<IActionResult> DeleteCar([FromQuery] int id)
+        [Route("{carId}")]
+        public async Task<IActionResult> DeleteCar([FromRoute] int carId)
         {   
-            var deleteCar = await _mediator.Send(new DeleteCar { CarId = id });
-            _logger.LogInformation($"Car with ID {id} was deleted");
+            var deleteCar = await _mediator.Send(new DeleteCar { CarId = carId});
+            _logger.LogInformation($"Car with ID {carId} was deleted");
             return NoContent();
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateCar([FromQuery] int id, [FromBody] CarPutPostDto car)
+        [Route("{carId}")]
+        public async Task<IActionResult> UpdateCar([FromRoute] int carId, [FromBody] CarPutPostDto car)
         {
+            var toUpdate = await _mediator.Send(new GetCarById { CarId = carId });
+            if (toUpdate== null)
+            {
+                _logger.LogWarning("The Id could not be found");
+                return NotFound();
+            }
+
             var command = new UpdateCar
             {
-                Id = id,
+                Id = carId,
                 Make = car.Make,
                 Model = car.Model,
                 Year = car.Year,

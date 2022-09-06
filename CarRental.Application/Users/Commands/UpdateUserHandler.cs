@@ -30,7 +30,8 @@ namespace CarRental.Application.Users.Commands
                 Email = request.Email,
 
             };
-             await _unitOfWork._userRepo.UpdateUser(userToUpdate);
+
+            await _unitOfWork._userRepo.UpdateUser(userToUpdate);
             await _unitOfWork.Save();
             return userToUpdate;
         }

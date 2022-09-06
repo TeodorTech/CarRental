@@ -28,7 +28,7 @@ namespace CarRental.Application.Cars.Commands
                 Year = request.Year,
                 PricePerDay = request.PricePerDay,
             };
-            _unitOfWork._carRepo.Update(carToUpdate);
+            await _unitOfWork._carRepo.Update(carToUpdate);
             await _unitOfWork.Save();
             return carToUpdate;
         }

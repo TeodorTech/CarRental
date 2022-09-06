@@ -17,7 +17,7 @@ namespace CarRental.Application.Repositories
         public List<Car> GetAll();
         public List<Car> GetAllCarsByMake(string make);
         public List<Car> GetAllCarsByPrice(int price);
-        public void Update(Car car);
+        public  Task Update(Car car);
 
     }
 }
