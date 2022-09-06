@@ -49,6 +49,28 @@ namespace CarRental.Api.Controllers
             _logger.LogInformation($"There are {result.Count} cars in the fleet");
             return Ok(mappedResult);
         }
+        [HttpGet]
+        [Route("getpage/{page}")]
+        public async Task<IActionResult> GetAllFromPage([FromRoute] int page)
+        {
+            _logger.LogInformation($"Retrieving the list of cars from page {page}");
+            var query = new GetAllCars();
+            var result = await _mediator.Send(query);
+            var mappedResult = _mapper.Map<List<CarGetDto>>(result);
+
+            var pageResult = 2f;
+            var pageCount = Math.Ceiling( result.Count() / pageResult);
+            var cars =  result.Skip((page - 1) * (int)pageResult).Take((int)pageResult).ToList();
+
+            var response = new ItemResponse<Car>
+            {
+                Items = cars,
+                CurrentPage = page,
+                Pages = (int)pageCount
+            };
+            _logger.LogInformation($"There are {result.Count} cars in the fleet");
+            return Ok(response);
+        }
         [HttpPost]
         public async Task<IActionResult> CreateCar([FromBody] CarPutPostDto car)
         {

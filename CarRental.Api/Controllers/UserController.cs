@@ -3,6 +3,7 @@ using CarRental.Api.DTO;
 using CarRental.Application.Users;
 using CarRental.Application.Users.Commands;
 using CarRental.Application.Users.Queries;
+using CarRental.Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,6 +34,7 @@ namespace CarRental.Api.Controllers
                 return NotFound();
             }
             var mappedResult = _mapper.Map<UserGetDto>(result);
+
             return Ok(mappedResult);
         }
         [HttpGet]
@@ -43,6 +45,31 @@ namespace CarRental.Api.Controllers
             var mappedResult = _mapper.Map<List<UserGetDto>>(result);
             _logger.LogInformation($"There are {result.Count} users in the database");
             return Ok(mappedResult);
+        }
+
+        [HttpGet]
+        [Route("getpage/{page}")]
+        public async Task<IActionResult> GetAllFromPage([FromRoute] int page)
+        {
+            _logger.LogInformation($"Retrieving the list of cars from page {page}");
+            var query = new GetAllUsers();
+            var result = await _mediator.Send(query);
+            var mappedResult = _mapper.Map<List<UserGetDto>>(result);
+
+            var pageResult = 2f;
+            var pageCount = Math.Ceiling(result.Count() / pageResult);
+            var users = result.Skip((page - 1) * (int)pageResult).Take((int)pageResult).ToList();
+
+            var response = new ItemResponse<User>
+            {
+                Items = users,
+                CurrentPage = page,
+                Pages = (int)pageCount
+            };
+
+
+            _logger.LogInformation($"There are {result.Count} cars in the fleet");
+            return Ok(response);
         }
         [HttpPost]
         public async Task<IActionResult> CreateUser([FromBody] UserPutPostDto user)
