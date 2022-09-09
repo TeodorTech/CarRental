@@ -1,5 +1,6 @@
 ﻿
 using CarRental.Domain.Interfaces.Repositories;
+using CarRental.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,13 +11,18 @@ namespace CarRental.Domain
 {
    public class BookingRepository: IBookingRepository
     {
-        private List<Booking> ListOfBookings = new List<Booking>();
-
-        public void CreateTheBook(Booking book)
+        private readonly DataContext _context;
+        public BookingRepository(DataContext context)
         {
-            ListOfBookings.Add(book);
+            _context = context;
         }
-        public Booking GetById(int id)
+
+        public async Task CreateTheBook(Booking book)
+        {
+            await _context.Bookings.AddAsync(book);
+            
+        }
+  /*      public Booking GetById(int id)
         {
             return ListOfBookings.FirstOrDefault(b => b.BookingId == id);
         }
@@ -27,7 +33,7 @@ namespace CarRental.Domain
         public void Delete(Booking booking)
         {
             ListOfBookings.Remove(ListOfBookings.FirstOrDefault(b => b.BookingId == booking.BookingId));
-        }
+        }*/
 
 
     }

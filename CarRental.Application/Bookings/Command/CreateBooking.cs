@@ -10,7 +10,9 @@ namespace CarRental.Application.Bookings.Command
 {
     public class CreateBooking : IRequest<Booking>
     {
-        public int carId { get; set; }
-        public int userId { get; set; }
+        public int CarId { get; set; }
+        public int UserId { get; set; }
+        public string StartDate { get; set; }
+        public string EndDate { get; set; }
     }
 }

@@ -9,10 +9,10 @@ namespace CarRental.Domain.Interfaces.Repositories
    public interface IBookingRepository
     {
 
-        public void CreateTheBook(Booking book);
-        public Booking GetById(int id);
+        public Task CreateTheBook(Booking book);
+       /* public Booking GetById(int id);
         public IEnumerable<Booking> GetAll();
-        public void Delete(Booking booking);
+        public void Delete(Booking booking);*/
 
      
 

@@ -32,6 +32,14 @@ namespace CarRental.Infrastructure.Migrations
                     b.Property<int>("CarId")
                         .HasColumnType("int");
 
+                    b.Property<string>("EndDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("StartDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -69,6 +77,40 @@ namespace CarRental.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cars");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Make = "Porche",
+                            Model = "911",
+                            PricePerDay = 350f,
+                            Year = 2008
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Make = "Porche",
+                            Model = "Cayene",
+                            PricePerDay = 500f,
+                            Year = 2020
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Make = "Porche",
+                            Model = "Panamera",
+                            PricePerDay = 450f,
+                            Year = 2016
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Make = "Porche",
+                            Model = "918",
+                            PricePerDay = 1050f,
+                            Year = 2021
+                        });
                 });
 
             modelBuilder.Entity("CarRental.Domain.User", b =>
@@ -126,7 +168,7 @@ namespace CarRental.Infrastructure.Migrations
                             Id = 3,
                             Age = 24,
                             City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            Email = "alex.dinca@yahoo.com",
                             FirstName = "Alex",
                             LastName = "Dinca"
                         },
@@ -134,8 +176,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             Id = 4,
                             Age = 21,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Cluj",
+                            Email = "andrei.ion@yahoo.com",
                             FirstName = "Andrei",
                             LastName = "Ion"
                         },
@@ -143,8 +185,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             Id = 5,
                             Age = 45,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Timisoara",
+                            Email = "=george.enescu@yahoo.com",
                             FirstName = "George",
                             LastName = "Enescu"
                         },
@@ -153,7 +195,7 @@ namespace CarRental.Infrastructure.Migrations
                             Id = 6,
                             Age = 38,
                             City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            Email = "cristiano.ronaldo@yahoo.com",
                             FirstName = "Cristiano",
                             LastName = "Ronaldo"
                         },
@@ -161,8 +203,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             Id = 7,
                             Age = 99,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Suceava",
+                            Email = "leonardo.davinci@yahoo.com",
                             FirstName = "Leonardo",
                             LastName = "Davinci"
                         },
@@ -170,8 +212,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             Id = 8,
                             Age = 49,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Timisoara",
+                            Email = "brad.pitt@yahoo.com",
                             FirstName = "Brad",
                             LastName = "Pitt"
                         },
@@ -179,8 +221,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             Id = 9,
                             Age = 45,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Bucuresti",
+                            Email = "megan.fox@yahoo.com",
                             FirstName = "Megan",
                             LastName = "Fox"
                         },
@@ -189,16 +231,16 @@ namespace CarRental.Infrastructure.Migrations
                             Id = 10,
                             Age = 50,
                             City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
-                            FirstName = "barack",
+                            Email = "barak.obama@yahoo.com",
+                            FirstName = "Barack",
                             LastName = "Obama"
                         },
                         new
                         {
                             Id = 11,
                             Age = 30,
-                            City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            City = "Cluj",
+                            Email = "steph.curry@yahoo.com",
                             FirstName = "Steph",
                             LastName = "Curry"
                         },
@@ -207,7 +249,16 @@ namespace CarRental.Infrastructure.Migrations
                             Id = 12,
                             Age = 35,
                             City = "Constanta",
-                            Email = "ioana.dinca@yahoo.com",
+                            Email = "lebron.james@yahoo.com",
+                            FirstName = "James",
+                            LastName = "LeBron"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Age = 35,
+                            City = "Constanta",
+                            Email = "lebron.james@yahoo.com",
                             FirstName = "James",
                             LastName = "LeBron"
                         });

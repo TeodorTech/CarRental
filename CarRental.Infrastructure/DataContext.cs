@@ -32,6 +32,10 @@ namespace CarRental.Infrastructure
                    .WithMany(b => b.Booking)
                    .HasForeignKey(b => b.UserId);
            }*/
+       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;");
+        }*/
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().HasData(
@@ -46,7 +50,8 @@ namespace CarRental.Infrastructure
                 new User { Id = 9, FirstName = "Megan", LastName = "Fox", Age = 45, Email = "megan.fox@yahoo.com", City = "Bucuresti" },
                 new User { Id = 10, FirstName = "Barack", LastName = "Obama", Age = 50, Email = "barak.obama@yahoo.com", City = "Constanta" },
                 new User { Id = 11, FirstName = "Steph", LastName = "Curry", Age = 30, Email = "steph.curry@yahoo.com", City = "Cluj" },
-                new User { Id = 12, FirstName = "James", LastName = "LeBron", Age = 35, Email = "lebron.james@yahoo.com", City = "Constanta" }
+                new User { Id = 12, FirstName = "James", LastName = "LeBron", Age = 35, Email = "lebron.james@yahoo.com", City = "Constanta" },
+                new User { Id = 13, FirstName = "James", LastName = "LeBron", Age = 35, Email = "lebron.james@yahoo.com", City = "Constanta" }
 
             );
             builder.Entity<Car>().HasData(
@@ -54,8 +59,12 @@ namespace CarRental.Infrastructure
                 new Car { Id = 2, Make = "Porche", Model = "Cayene", Year = 2020, PricePerDay = 500 },
                 new Car { Id = 3, Make = "Porche", Model = "Panamera", Year = 2016, PricePerDay = 450 },
                 new Car { Id = 4, Make = "Porche", Model = "918", Year = 2021, PricePerDay = 1050 }
+               
 
                 );
+           /* builder.Entity<Booking>().HasData(
+                new Booking { BookingId = 1, CarId = 1, UserId = 1, StartDate = "today", EndDate = "tommowrow" }
+                );*/
         }
 
     }

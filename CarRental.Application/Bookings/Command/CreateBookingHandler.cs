@@ -1,4 +1,5 @@
 ﻿using CarRental.Domain;
+using CarRental.Domain.Interfaces;
 using CarRental.Domain.Interfaces.Repositories;
 using MediatR;
 using System;
@@ -11,17 +12,18 @@ namespace CarRental.Application.Bookings.Command
 {
     public class CreateBookingHandler : IRequestHandler<CreateBooking, Booking>
     {
-        private IBookingRepository _bookingRepo;
-        public CreateBookingHandler(IBookingRepository bookingRepo)
+        private readonly IUnitOfWork _unitOfWork;
+        public CreateBookingHandler(IUnitOfWork unitOfWork)
         {
-            _bookingRepo = bookingRepo;
+            _unitOfWork = unitOfWork;
         }
 
-        public Task<Booking> Handle(CreateBooking request, CancellationToken cancellationToken)
+        public async Task<Booking> Handle(CreateBooking request, CancellationToken cancellationToken)
         {
-            var booking = new Booking(request.carId, request.userId);
-            _bookingRepo.CreateTheBook(booking);
-            return Task.FromResult(booking);
+            var booking = new Booking(request.CarId, request.UserId,request.StartDate,request.EndDate);
+            await _unitOfWork._bookRepo.CreateTheBook(booking);
+            await _unitOfWork.Save();
+            return booking;
             
         }
     }

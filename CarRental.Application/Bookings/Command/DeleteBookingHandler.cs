@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRental.Application.Bookings.Command
+/*namespace CarRental.Application.Bookings.Command
 {
     public class DeleteBookingHandler : IRequestHandler<DeleteBooking, Booking>
     {
@@ -25,4 +25,4 @@ namespace CarRental.Application.Bookings.Command
             return Task.FromResult(booking);
         }
     }
-}
+}*/
