@@ -22,18 +22,21 @@ namespace CarRental.Domain
             await _context.Bookings.AddAsync(book);
             
         }
-  /*      public Booking GetById(int id)
-        {
-            return ListOfBookings.FirstOrDefault(b => b.BookingId == id);
-        }
-        public IEnumerable<Booking> GetAll()
-        {
-            return ListOfBookings;
-        }
         public void Delete(Booking booking)
         {
-            ListOfBookings.Remove(ListOfBookings.FirstOrDefault(b => b.BookingId == booking.BookingId));
-        }*/
+            _context.Bookings.Remove(booking);
+        }
+      
+        public Booking GetBookingById(int id)
+        {
+            var booking = _context.Bookings.FirstOrDefault(b => b.BookingId == id);
+            return booking;
+        }
+        public List<Booking> GetAll()
+        {
+            return _context.Bookings.ToList();
+        }
+       
 
 
     }

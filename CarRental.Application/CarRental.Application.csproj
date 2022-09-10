@@ -33,8 +33,4 @@
     <ProjectReference Include="..\CarRental.Domain\CarRental.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Bookings\Queries\" />
-  </ItemGroup>
-
 </Project>

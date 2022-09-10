@@ -2,7 +2,7 @@
 {
     public class BookingGetDto
     {
-        public int Id { get; set; }
+        public int BookingId { get; set; }
         public int CarId { get; set; }
         public int UserId { get; set; }
         public string StartDate { get; set; }

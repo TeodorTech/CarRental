@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using CarRental.Api.DTO;
 using CarRental.Application.Bookings.Command;
+using CarRental.Application.Bookings.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,23 @@ namespace CarRental.Api.Controllers
             var newBook = await _mediator.Send(command);
             var mappedBooking = _mapper.Map<BookingGetDto>(newBook);
             return Ok(mappedBooking);
+        }
+
+        
+        [HttpDelete]
+        [Route("{bookingId}")]
+        public async Task<IActionResult> DeleteBooking([FromRoute] int bookingId)
+        {
+            var deleteBooking = await _mediator.Send(new DeleteBooking { Id = bookingId });
+            return NoContent();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllBookings()
+        {
+            var listOfBookings = await _mediator.Send(new GetAllBookings { });
+            var mappedResult = _mapper.Map<List<BookingGetDto>>(listOfBookings);
+            return Ok(mappedResult);
         }
     }
 }

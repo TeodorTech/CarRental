@@ -10,11 +10,11 @@ namespace CarRental.Domain.Interfaces.Repositories
     {
 
         public Task CreateTheBook(Booking book);
-       /* public Booking GetById(int id);
-        public IEnumerable<Booking> GetAll();
-        public void Delete(Booking booking);*/
+        public void Delete(Booking booking);
+        public Booking GetBookingById(int id);
+        public List<Booking> GetAll();
 
-     
+
 
     }
 }
