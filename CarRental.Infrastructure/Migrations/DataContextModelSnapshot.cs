@@ -50,6 +50,16 @@ namespace CarRental.Infrastructure.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Bookings");
+
+                    b.HasData(
+                        new
+                        {
+                            BookingId = 1,
+                            CarId = 1,
+                            EndDate = "tommowrow",
+                            StartDate = "today",
+                            UserId = 1
+                        });
                 });
 
             modelBuilder.Entity("CarRental.Domain.Car", b =>

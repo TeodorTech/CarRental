@@ -34,6 +34,10 @@ namespace CarRental.Api.Controllers
         public async Task<IActionResult> DeleteBooking([FromRoute] int bookingId)
         {
             var deleteBooking = await _mediator.Send(new DeleteBooking { Id = bookingId });
+            if (deleteBooking == null)
+            {
+                return NotFound();
+            }
             return NoContent();
         }
 
@@ -42,6 +46,18 @@ namespace CarRental.Api.Controllers
         {
             var listOfBookings = await _mediator.Send(new GetAllBookings { });
             var mappedResult = _mapper.Map<List<BookingGetDto>>(listOfBookings);
+            return Ok(mappedResult);
+        }
+        [HttpGet]
+        [Route("{bookingId}")]
+        public async Task <IActionResult> GetBookingById([FromRoute] int bookingId)
+        {
+            var booking = await _mediator.Send(new GetBookingById { Id = bookingId });
+            if (booking == null)
+            {
+                return NotFound();
+            }
+            var mappedResult = _mapper.Map<BookingGetDto>(booking);
             return Ok(mappedResult);
         }
     }

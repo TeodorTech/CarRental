@@ -84,12 +84,12 @@ namespace CarRental.Api.Controllers
         [Route("{userId}")]
         public async Task<IActionResult> UpdateUser([FromRoute] int userId, [FromBody] UserPutPostDto user)
         {
-            var toUpdate = await _mediator.Send(new GetUserById { UserId = userId });
+         /*   var toUpdate = await _mediator.Send(new GetUserById { UserId = userId });
             if (toUpdate == null)
             {
                 _logger.LogWarning("The Id could not be found");
                 return NotFound();
-            }
+            }*/
             var command = new UpdateUser
             {
                 Id = userId,

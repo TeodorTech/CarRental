@@ -62,9 +62,9 @@ namespace CarRental.Infrastructure
                
 
                 );
-           /* builder.Entity<Booking>().HasData(
+            builder.Entity<Booking>().HasData(
                 new Booking { BookingId = 1, CarId = 1, UserId = 1, StartDate = "today", EndDate = "tommowrow" }
-                );*/
+                );
         }
 
     }
