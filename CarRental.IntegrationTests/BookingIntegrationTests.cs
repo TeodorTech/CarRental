@@ -46,8 +46,8 @@ namespace CarRental.IntegrationTests
             {
                 CarId = 2,
                 UserId=2,
-                StartDate="Monday",
-                EndDate="Friday"
+                StartDate=DateTime.Now,
+                EndDate=DateTime.Now
               
             };
             var client = _factory.CreateClient();
