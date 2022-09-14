@@ -63,7 +63,7 @@ namespace CarRental.Infrastructure
 
                 );
             builder.Entity<Booking>().HasData(
-                new Booking { BookingId = 1, CarId = 1, UserId = 1, StartDate = "today", EndDate = "tommowrow" }
+                new Booking { BookingId = 1, CarId = 1, UserId = 1, StartDate = DateTime.Now, EndDate = DateTime.Now }
                 );
         }
 

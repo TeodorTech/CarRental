@@ -9,8 +9,8 @@ namespace CarRental.Domain
     public class Booking
     {
         public int BookingId { get; set; }
-        public string StartDate { get; set; }
-        public string EndDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
 
         public int CarId { get; set; }
         public Car Car { get; set; }
@@ -23,7 +23,7 @@ namespace CarRental.Domain
 
         }
 
-        public Booking(int carId, int userId, string startDate, string endDate)
+        public Booking(int carId, int userId,DateTime startDate,DateTime endDate)
         {
             CarId = carId;
             UserId = userId;
