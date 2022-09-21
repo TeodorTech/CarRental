@@ -6,6 +6,7 @@ using CarRental.Application.Commands;
 using CarRental.Application.Queries;
 using CarRental.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRental.Api.Controllers
@@ -38,8 +39,9 @@ namespace CarRental.Api.Controllers
             var mappedResult = _mapper.Map<CarGetDto>(result);
             return Ok(mappedResult);
         }
-
+        
         [HttpGet]
+        [Route("getallcars")]
         public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Retrieving the list of cars");
