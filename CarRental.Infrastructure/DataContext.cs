@@ -55,10 +55,10 @@ namespace CarRental.Infrastructure
 
             );
             builder.Entity<Car>().HasData(
-                new Car { Id = 1, Make = "Porche", Model = "911", Year = 2008, PricePerDay = 350 },
-                new Car { Id = 2, Make = "Porche", Model = "Cayene", Year = 2020, PricePerDay = 500 },
-                new Car { Id = 3, Make = "Porche", Model = "Panamera", Year = 2016, PricePerDay = 450 },
-                new Car { Id = 4, Make = "Porche", Model = "918", Year = 2021, PricePerDay = 1050 }
+                new Car { Id = 1, Make = "Porche", Model = "911", Year = 2008, PricePerDay = 350,ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 2, Make = "Porche", Model = "Cayene", Year = 2020, PricePerDay = 500,ImageLink= "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 3, Make = "Porche", Model = "Panamera", Year = 2016, PricePerDay = 450 , ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 4, Make = "Porche", Model = "918", Year = 2021, PricePerDay = 1050 , ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" }
                
 
                 );
