@@ -12,6 +12,7 @@ namespace CarRental.Domain
         public int Id { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
+        public string Color { get; set; }
         public int Year { get; set; }
         public float PricePerDay { get; set; }
         public string ImageLink { get; set; }
@@ -21,14 +22,16 @@ namespace CarRental.Domain
 
         }
 
-        public Car(string make, string model, int year, float pricePerDay,string imageLink)
+        public Car(string make, string model,string color, int year, float pricePerDay,string imageLink)
         {
 
-            this.Year = year;
             this.Make = make;
             this.Model = model;
+            this.Color = color;
+            this.Year = year;
             this.PricePerDay = pricePerDay;
             this.ImageLink = imageLink;
+
 
         }
 

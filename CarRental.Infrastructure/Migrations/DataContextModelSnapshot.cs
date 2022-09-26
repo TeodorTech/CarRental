@@ -55,8 +55,8 @@ namespace CarRental.Infrastructure.Migrations
                         {
                             BookingId = 1,
                             CarId = 1,
-                            EndDate = new DateTime(2022, 9, 23, 8, 57, 6, 685, DateTimeKind.Local).AddTicks(4212),
-                            StartDate = new DateTime(2022, 9, 23, 8, 57, 6, 685, DateTimeKind.Local).AddTicks(4181),
+                            EndDate = new DateTime(2022, 9, 26, 11, 1, 28, 629, DateTimeKind.Local).AddTicks(404),
+                            StartDate = new DateTime(2022, 9, 26, 11, 1, 28, 629, DateTimeKind.Local).AddTicks(371),
                             UserId = 1
                         });
                 });
@@ -68,6 +68,10 @@ namespace CarRental.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Color")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageLink")
                         .IsRequired()
@@ -95,6 +99,7 @@ namespace CarRental.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
+                            Color = "Red",
                             ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg",
                             Make = "Porche",
                             Model = "911",
@@ -104,6 +109,7 @@ namespace CarRental.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
+                            Color = "Red",
                             ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg",
                             Make = "Porche",
                             Model = "Cayene",
@@ -113,6 +119,7 @@ namespace CarRental.Infrastructure.Migrations
                         new
                         {
                             Id = 3,
+                            Color = "Blue",
                             ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg",
                             Make = "Porche",
                             Model = "Panamera",
@@ -122,6 +129,7 @@ namespace CarRental.Infrastructure.Migrations
                         new
                         {
                             Id = 4,
+                            Color = "Red",
                             ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg",
                             Make = "Porche",
                             Model = "918",

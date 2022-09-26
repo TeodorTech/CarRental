@@ -73,6 +73,20 @@ namespace CarRental.Api.Controllers
             _logger.LogInformation($"There are {result.Count} cars in the fleet");
             return Ok(response);
         }
+
+        [HttpGet]
+        [Route("carselector{make}/{price}/{color}")]
+        public async Task<IActionResult> SelectCar([FromRoute] string color, int price, string make)
+        {
+            _logger.LogInformation("Retrieving the list of cars");
+            var query = new CarSelector { Make = make, Color=color ,Price = price };
+            var result = await _mediator.Send(query);
+            var mappedResult = _mapper.Map<List<CarGetDto>>(result);
+            _logger.LogInformation($"There are {result.Count} cars in the fleet");
+            return Ok(mappedResult);
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> CreateCar([FromBody] CarPutPostDto car)
         {

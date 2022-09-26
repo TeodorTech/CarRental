@@ -22,7 +22,7 @@ namespace CarRental.Application.Cars.Commands
 
         public async Task<Car> Handle(CreateCar request, CancellationToken cancellationToken)
         {
-            var car = new Car(request.Make,request.Model, request.Year, request.PricePerDay,request.ImageLink);
+            var car = new Car(request.Make,request.Model,request.Color, request.Year, request.PricePerDay,request.ImageLink);
             await _unitOfWork._carRepo.CreateCar(car);
             await _unitOfWork.Save();
             return car;

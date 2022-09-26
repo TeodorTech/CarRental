@@ -58,5 +58,11 @@ namespace CarRental.Infrastrcuture
             _logger.LogInformation($"List of cars higher than {price} was retrived");
             return filteredList;
         }
+
+        public List<Car> CarFilter(string make,string color ,int price)
+        {
+           var selectedCars = _context.Cars.Where(c => c.Make == make && c.PricePerDay<=price && c.Color==color).ToList();
+            return selectedCars;
+        }
     }
 }

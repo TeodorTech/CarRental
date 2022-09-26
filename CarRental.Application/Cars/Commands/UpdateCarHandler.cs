@@ -25,6 +25,7 @@ namespace CarRental.Application.Cars.Commands
                 Id = request.Id,
                 Make=request.Make,
                 Model = request.Model,
+                Color=request.Color,
                 Year = request.Year,
                 PricePerDay = request.PricePerDay,
                 ImageLink = request.ImageLink
