@@ -110,6 +110,7 @@ namespace CarRental.Api.Controllers
                 Model = car.Model,
                 Year = car.Year,
                 PricePerDay = car.PricePerDay,
+                ImageLink=car.ImageLink,
             };
             _logger.LogInformation("Request with the updated car was sent!");
             var updatedCar = await _mediator.Send(command);

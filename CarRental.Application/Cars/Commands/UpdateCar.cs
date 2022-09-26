@@ -15,5 +15,6 @@ namespace CarRental.Application.Cars.Commands
         public string Model { get; set; }
         public int Year { get; set; }
         public float PricePerDay { get; set; }
+        public string ImageLink { get; set; }
     }
 }

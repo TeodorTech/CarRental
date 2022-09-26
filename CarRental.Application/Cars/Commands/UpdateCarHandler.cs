@@ -27,6 +27,7 @@ namespace CarRental.Application.Cars.Commands
                 Model = request.Model,
                 Year = request.Year,
                 PricePerDay = request.PricePerDay,
+                ImageLink = request.ImageLink
             };
             await _unitOfWork._carRepo.Update(carToUpdate);
             await _unitOfWork.Save();

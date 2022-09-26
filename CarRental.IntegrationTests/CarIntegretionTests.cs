@@ -38,7 +38,7 @@ namespace CarRental.IntegrationTests
         public async Task GetAll_ShouldReturnResponse()
         {
             var client = _factory.CreateClient();
-            var response = await client.GetAsync("api/car");
+            var response = await client.GetAsync("api/car/getallcars");
             Assert.Equal(HttpStatusCode.OK, response.StatusCode);
         }
         [Fact]
@@ -50,6 +50,7 @@ namespace CarRental.IntegrationTests
                 Model = "R8",
                 Year = 2008,
                 PricePerDay = 300,
+                ImageLink= "img.jpg"
             };
             var client = _factory.CreateClient();
             var response = await client.PostAsync("api/car", new StringContent(JsonConvert.SerializeObject(newCar), Encoding.UTF8, "application/json"));
@@ -82,6 +83,7 @@ namespace CarRental.IntegrationTests
                 Model = "R8",
                 Year = 2008,
                 PricePerDay = 300,
+                ImageLink="image.jpg"
             };
             var client = _factory.CreateClient();
             var response = await client.PutAsync("api/car/1", new StringContent(JsonConvert.SerializeObject(updateCar), Encoding.UTF8, "application/json"));
@@ -91,7 +93,7 @@ namespace CarRental.IntegrationTests
         }
 
         [Fact]
-        public async Task UpdateCar_ShouldReturn4004IfIdNotFound()
+        public async Task UpdateCar_ShouldReturn404IfIdNotFound()
         {
 
             var updateCar= new UpdateCar
@@ -100,9 +102,10 @@ namespace CarRental.IntegrationTests
                 Model = "R8",
                 Year = 2008,
                 PricePerDay = 300,
+                ImageLink = "image.jpg"
             };
             var client = _factory.CreateClient();
-            var response = await client.PutAsync("api/car/10", new StringContent(JsonConvert.SerializeObject(updateCar), Encoding.UTF8, "application/json"));
+            var response = await client.PutAsync("api/car/100", new StringContent(JsonConvert.SerializeObject(updateCar), Encoding.UTF8, "application/json"));
 
             Assert.Equal(HttpStatusCode.NotFound, response.StatusCode);
 
