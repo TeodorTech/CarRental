@@ -1,4 +1,5 @@
-﻿using CarRental.Domain;
+﻿using CarRental.Api.DTO;
+using CarRental.Domain;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -25,15 +26,15 @@ namespace CarRental.Api.Controllers
         [HttpPost]
         [Route("login")]
 
-        public async Task<IActionResult> Login(string userName,string password)
+        public async Task<IActionResult> Login([FromBody]UserLoginDTO userLoginDto)
         {
-            var user = await _userManager.FindByNameAsync(userName);
-            if(user!= null && await _userManager.CheckPasswordAsync(user,password))
+            var user = await _userManager.FindByNameAsync(userLoginDto.UserName);
+            if(user!= null && await _userManager.CheckPasswordAsync(user, userLoginDto.Password))
                 {
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>()
                 {
-                    new Claim(ClaimTypes.Name, userName),
+                    new Claim(ClaimTypes.Name, userLoginDto.UserName),
                 };
                 foreach( var userRole in userRoles)
                 {
@@ -60,23 +61,23 @@ namespace CarRental.Api.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register(string firstName, string lastName, int age, string city, string email,string userName, string password)
+        public async Task<IActionResult> Register([FromBody]UserAuthDTO userDto)
         {
-            var userExists = await _userManager.FindByNameAsync(userName);
+            var userExists = await _userManager.FindByNameAsync(userDto.UserName);
             if (userExists != null)
                 return BadRequest("User is already registered");
             User userReg = new User
             {
-                FirstName = firstName,
-                LastName = lastName,
-                Age = age,
-                City = city,
-                Email = email,
-                UserName = userName
+                FirstName = userDto.FirstName,
+                LastName =userDto.LastName,
+                Age = userDto.Age,
+                City =userDto.City,
+                Email = userDto.Email,
+                UserName = userDto.UserName
             };
           
 
-            var result = await _userManager.CreateAsync(userReg, password);
+            var result = await _userManager.CreateAsync(userReg, userDto.Password);
 
             if (!result.Succeeded)
             {
