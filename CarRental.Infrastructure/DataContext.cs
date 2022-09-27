@@ -1,4 +1,5 @@
 ﻿using CarRental.Domain;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.Infrastructure
 {
-    public class DataContext : DbContext
+    public class DataContext:IdentityDbContext<User>
     {
         public DataContext(){}
-        public DataContext(DbContextOptions options) : base(options)
+        public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
         }
@@ -32,11 +33,11 @@ namespace CarRental.Infrastructure
                    .WithMany(b => b.Booking)
                    .HasForeignKey(b => b.UserId);
            }*/
-       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;");
-        }*/
-        protected override void OnModelCreating(ModelBuilder builder)
+        /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+         {
+             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;");
+         }*/
+  /*      protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.Entity<User>().HasData(
                 new User { Id = 1, FirstName = "Teodor", LastName = "Nicolau", Age = 23, Email = "teo.steaua07@yahoo.com", City = "Bucuresti" },
@@ -55,17 +56,17 @@ namespace CarRental.Infrastructure
 
             );
             builder.Entity<Car>().HasData(
-                new Car { Id = 1, Make = "Porche", Model = "911", Color="Red", Year = 2008, PricePerDay = 350,ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
-                new Car { Id = 2, Make = "Porche", Model = "Cayene", Color = "Red", Year = 2020, PricePerDay = 500,ImageLink= "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
-                new Car { Id = 3, Make = "Porche", Model = "Panamera", Color = "Blue", Year = 2016, PricePerDay = 450 , ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
-                new Car { Id = 4, Make = "Porche", Model = "918", Color = "Red", Year = 2021, PricePerDay = 1050 , ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" }
-               
+                new Car { Id = 1, Make = "Porche", Model = "911", Color = "Red", Year = 2008, PricePerDay = 350, ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 2, Make = "Porche", Model = "Cayene", Color = "Red", Year = 2020, PricePerDay = 500, ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 3, Make = "Porche", Model = "Panamera", Color = "Blue", Year = 2016, PricePerDay = 450, ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" },
+                new Car { Id = 4, Make = "Porche", Model = "918", Color = "Red", Year = 2021, PricePerDay = 1050, ImageLink = "https://thumbs.dreamstime.com/b/tula-russia-march-porsche-turbo-s-white-sports-car-coupe-isolated-white-background-d-rendering-tula-russia-march-porsche-turbo-225956942.jpg" }
+
 
                 );
             builder.Entity<Booking>().HasData(
                 new Booking { BookingId = 1, CarId = 1, UserId = 1, StartDate = DateTime.Now, EndDate = DateTime.Now }
                 );
-        }
+        }*/
 
     }
 }

@@ -23,8 +23,6 @@ D:\CarRental\CarRental.Program\bin\Debug\net6.0\CarRental.Application.pdb
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.Contracts.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Humanizer.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
@@ -32,13 +30,8 @@ D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Ab
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Design.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -69,14 +62,6 @@ D:\CarRental\CarRental.Program\bin\Debug\net6.0\AutoMapper.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Castle.Core.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Moq.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\System.Diagnostics.EventLog.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.Messages.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Diagnostics.EventLog.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Configuration.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Binder.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.Configuration.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Logging.Console.dll
-D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Data.Sqlite.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Sqlite.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
@@ -101,3 +86,9 @@ D:\CarRental\CarRental.Program\bin\Debug\net6.0\runtimes\win-x86\native\e_sqlite
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+D:\CarRental\CarRental.Program\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll

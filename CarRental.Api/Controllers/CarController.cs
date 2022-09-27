@@ -6,6 +6,7 @@ using CarRental.Application.Commands;
 using CarRental.Application.Queries;
 using CarRental.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,9 +40,10 @@ namespace CarRental.Api.Controllers
             var mappedResult = _mapper.Map<CarGetDto>(result);
             return Ok(mappedResult);
         }
-        
+
         [HttpGet]
         [Route("getallcars")]
+        [Authorize(Policy = "ContentEditor")]
         public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Retrieving the list of cars");
@@ -75,8 +77,8 @@ namespace CarRental.Api.Controllers
         }
 
         [HttpGet]
-        [Route("carselector{make}/{price}/{color}")]
-        public async Task<IActionResult> SelectCar([FromRoute] string color, int price, string make)
+        [Route("carselector/{make}/{price}/{color}")]
+        public async Task<IActionResult> SelectCar([FromRoute] string make, string color, int price )
         {
             _logger.LogInformation("Retrieving the list of cars");
             var query = new CarSelector { Make = make, Color=color ,Price = price };
@@ -86,7 +88,7 @@ namespace CarRental.Api.Controllers
             return Ok(mappedResult);
         }
 
-
+        
         [HttpPost]
         public async Task<IActionResult> CreateCar([FromBody] CarPutPostDto car)
         {
