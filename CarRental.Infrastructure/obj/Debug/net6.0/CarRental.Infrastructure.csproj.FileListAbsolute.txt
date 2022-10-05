@@ -1,8 +1,13 @@
 D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Infrastructure.deps.json
+D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Infrastructure.runtimeconfig.json
 D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Infrastructure.dll
 D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Infrastructure.pdb
+D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Application.dll
 D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Domain.dll
+D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Application.pdb
 D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Domain.pdb
+D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.csproj.AssemblyReference.cache
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.AssemblyInfoInputs.cache
@@ -12,10 +17,5 @@ D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.dll
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\refint\CarRental.Infrastructure.dll
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.pdb
-D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\ref\CarRental.Infrastructure.dll
-D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Application.dll
-D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Application.pdb
-D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\CarRental.Infrastructure.runtimeconfig.json
 D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\CarRental.Infrastructure.genruntimeconfig.cache
-D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-D:\CarRental\CarRental.Infrastructure\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\CarRental\CarRental.Infrastructure\obj\Debug\net6.0\ref\CarRental.Infrastructure.dll

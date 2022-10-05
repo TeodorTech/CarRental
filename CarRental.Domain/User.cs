@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace CarRental.Domain
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     { 
 
-        public int Id { get; set; }
+       
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
@@ -20,10 +20,11 @@ namespace CarRental.Domain
         public ICollection<Booking> Booking { get; set; }
 
         public override string ToString() => $"{FirstName},{LastName},{Age}";
-
         public User()
         {
+
         }
+    
 
         public User(string FirstName, string LastName, int Age,string City,string Email)
         {

@@ -43,7 +43,7 @@ namespace CarRental.Api.Controllers
 
         [HttpGet]
         [Route("getallcars")]
-        [Authorize(Policy = "ContentEditor")]
+        /*[Authorize(Policy = "ContentEditor")]*/
         public async Task<IActionResult> GetAll()
         {
             _logger.LogInformation("Retrieving the list of cars");
@@ -78,10 +78,10 @@ namespace CarRental.Api.Controllers
 
         [HttpGet]
         [Route("carselector/{make}/{price}/{color}")]
-        public async Task<IActionResult> SelectCar([FromRoute] string make, string color, int price )
+        public async Task<IActionResult> SelectCar([FromRoute] string? make, string? color, int? price )
         {
             _logger.LogInformation("Retrieving the list of cars");
-            var query = new CarSelector { Make = make, Color=color ,Price = price };
+            var query = new CarSelector { Make = make, Color=color ,Price = (int)price };
             var result = await _mediator.Send(query);
             var mappedResult = _mapper.Map<List<CarGetDto>>(result);
             _logger.LogInformation($"There are {result.Count} cars in the fleet");
@@ -124,6 +124,7 @@ namespace CarRental.Api.Controllers
                 Id = carId,
                 Make = car.Make,
                 Model = car.Model,
+                Color= car.Color,
                 Year = car.Year,
                 PricePerDay = car.PricePerDay,
                 ImageLink=car.ImageLink,

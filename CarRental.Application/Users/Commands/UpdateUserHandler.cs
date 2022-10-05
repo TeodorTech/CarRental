@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CarRental.Application.Users.Commands
+/*namespace CarRental.Application.Users.Commands
 {
     public class UpdateUserHandler : IRequestHandler<UpdateUser, User>
     {
@@ -36,4 +36,4 @@ namespace CarRental.Application.Users.Commands
             return userToUpdate;
         }
     }
-}
+}*/

@@ -1,8 +1,11 @@
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.deps.json
+D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.runtimeconfig.json
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.dll
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.pdb
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Domain.dll
+D:\CarRental\CarRental.Application\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Domain.pdb
+D:\CarRental\CarRental.Application\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.csproj.AssemblyReference.cache
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.GeneratedMSBuildEditorConfig.editorconfig
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.AssemblyInfoInputs.cache
@@ -12,8 +15,5 @@ D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.csproj
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.dll
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\refint\CarRental.Application.dll
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.pdb
-D:\CarRental\CarRental.Application\obj\Debug\net6.0\ref\CarRental.Application.dll
-D:\CarRental\CarRental.Application\bin\Debug\net6.0\CarRental.Application.runtimeconfig.json
 D:\CarRental\CarRental.Application\obj\Debug\net6.0\CarRental.Application.genruntimeconfig.cache
-D:\CarRental\CarRental.Application\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
-D:\CarRental\CarRental.Application\bin\Debug\net6.0\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+D:\CarRental\CarRental.Application\obj\Debug\net6.0\ref\CarRental.Application.dll

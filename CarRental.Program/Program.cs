@@ -40,7 +40,7 @@ namespace CarRental.Program
             var diContainer = new ServiceCollection()
                 .AddScoped<ICarRepository, CarRepository>()
                 .AddDbContext<DataContext>(options => options.UseSqlServer(@"Data Source=DESKTOP-JEIF0LB\SQLEXPRESS; Initial Catalog=CarRentalDB; Trusted_Connection=True;"))
-                .AddScoped<IUserRepository, UserRepository>()
+                //.AddScoped<IUserRepository, UserRepository>()
                 .AddScoped<IBookingRepository, BookingRepository>()
                 .AddScoped<IUnitOfWork,UnitOfWork>()
                 .AddMediatR(typeof(CreateCarHandler))

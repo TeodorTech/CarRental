@@ -22,9 +22,9 @@ namespace CarRental.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBook([FromBody] BookingPutPostDto car)
+        public async Task<IActionResult> CreateBook([FromBody] BookingPutPostDto book)
         {
-            var command = _mapper.Map<CreateBooking>(car);
+            var command = _mapper.Map<CreateBooking>(book);
             var newBook = await _mediator.Send(command);
             var mappedBooking = _mapper.Map<BookingGetDto>(newBook);
             _logger.LogInformation($"A new booking was created at {DateTime.Now.TimeOfDay}");

@@ -12,12 +12,12 @@ namespace CarRental.Api.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthenticationController:ControllerBase
+    public class AuthenticationController : ControllerBase
     {
 
         private readonly UserManager<User> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
-        public AuthenticationController( UserManager<User> userManager, RoleManager<IdentityRole> roleManager)
+        private readonly RoleManager<IdentityRole<int>> _roleManager;
+        public AuthenticationController(UserManager<User> userManager, RoleManager<IdentityRole<int>> roleManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
@@ -26,17 +26,22 @@ namespace CarRental.Api.Controllers
         [HttpPost]
         [Route("login")]
 
-        public async Task<IActionResult> Login([FromBody]UserLoginDTO userLoginDto)
+        public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDto)
         {
             var user = await _userManager.FindByNameAsync(userLoginDto.UserName);
-            if(user!= null && await _userManager.CheckPasswordAsync(user, userLoginDto.Password))
-                {
+            var id = await _userManager.GetUserIdAsync(user);
+            Console.WriteLine(id);
+            if (user != null && await _userManager.CheckPasswordAsync(user, userLoginDto.Password))
+            {
                 var userRoles = await _userManager.GetRolesAsync(user);
                 var authClaims = new List<Claim>()
                 {
                     new Claim(ClaimTypes.Name, userLoginDto.UserName),
+                    new Claim("user_id",id)
+
+
                 };
-                foreach( var userRole in userRoles)
+                foreach (var userRole in userRoles)
                 {
                     authClaims.Add(new Claim(ClaimTypes.Role, userRole));
                 }
@@ -51,7 +56,8 @@ namespace CarRental.Api.Controllers
                 return Ok(new
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
-                    expiration = token.ValidTo
+                    expiration = token.ValidTo,
+                    token_id = id
                 });
 
             }
@@ -61,7 +67,7 @@ namespace CarRental.Api.Controllers
 
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody]UserAuthDTO userDto)
+        public async Task<IActionResult> Register([FromBody] UserAuthDTO userDto)
         {
             var userExists = await _userManager.FindByNameAsync(userDto.UserName);
             if (userExists != null)
@@ -69,13 +75,13 @@ namespace CarRental.Api.Controllers
             User userReg = new User
             {
                 FirstName = userDto.FirstName,
-                LastName =userDto.LastName,
+                LastName = userDto.LastName,
                 Age = userDto.Age,
-                City =userDto.City,
+                City = userDto.City,
                 Email = userDto.Email,
                 UserName = userDto.UserName
             };
-          
+
 
             var result = await _userManager.CreateAsync(userReg, userDto.Password);
 
@@ -86,30 +92,31 @@ namespace CarRental.Api.Controllers
             return Ok("User Created Succesfuly");
         }
 
-        [HttpPost]
-        [Route("assing-role")]
+        /*  [HttpPost]
+          [Route("assing-role")]
 
-        public async Task<IActionResult> AddToRole(string userName,string roleName)
-        {
-            var userExists = await _userManager.FindByNameAsync(userName);
-            if (userExists == null)
-                return BadRequest("User is already registered");
-            var role = await _roleManager.FindByNameAsync(roleName);
+          public async Task<IActionResult> AddToRole(string userName, string roleName)
+          {
+              var userExists = await _userManager.FindByNameAsync(userName);
+              if (userExists == null)
+                  return BadRequest("User is already registered");
+              var role = await _roleManager.FindByNameAsync(roleName);
 
-            if (role == null)
-            {
-                var roleAdded = await _roleManager.CreateAsync(new IdentityRole
-                {
-                    Name = roleName
-                });
-            }
-            var addRoleToUser = await _userManager.AddToRoleAsync(userExists, roleName);
-            if (!addRoleToUser.Succeeded)
-            {
-                return BadRequest("Failed to add role to user");
-            }
-            return Ok($"User added to {roleName} role");
-        }
+              if (role == null)
+              {
+                  var roleAdded = await _roleManager.CreateAsync(new IdentityRole<string>
+                  {
+                      Name = roleName
+                  });
+              }
+              var addRoleToUser = await _userManager.AddToRoleAsync(userExists, roleName);
+              if (!addRoleToUser.Succeeded)
+              {
+                  return BadRequest("Failed to add role to user");
+              }
+              return Ok($"User added to {roleName} role");
+          }
 
+      }*/
     }
 }
