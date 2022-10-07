@@ -12,6 +12,7 @@ namespace CarRental.Domain.Interfaces.Repositories
         public Task CreateTheBook(Booking book);
         public void Delete(Booking booking);
         public Booking GetBookingById(int id);
+        public List<Booking> GetBookingByUserId(int userId);
         public List<Booking> GetAll();
 
 

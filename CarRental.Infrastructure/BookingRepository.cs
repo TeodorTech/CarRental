@@ -42,6 +42,10 @@ namespace CarRental.Domain
             return _context.Bookings.ToList();
 
         }
+        public List<Booking> GetBookingByUserId(int userId)
+        {
+            return _context.Bookings.Where(b => b.UserId == userId).ToList();
+        }
        
 
 

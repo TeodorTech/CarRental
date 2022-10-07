@@ -58,7 +58,7 @@ namespace CarRental.Api.Controllers
         }
         [HttpGet]
         [Route("{bookingId}")]
-        public async Task <IActionResult> GetBookingById([FromRoute] int bookingId)
+        public async Task<IActionResult> GetBookingById([FromRoute] int bookingId)
         {
             _logger.LogInformation("Retrieving the booking by Id");
             var booking = await _mediator.Send(new GetBookingById { Id = bookingId });
@@ -68,6 +68,21 @@ namespace CarRental.Api.Controllers
                 return NotFound();
             }
             var mappedResult = _mapper.Map<BookingGetDto>(booking);
+            return Ok(mappedResult);
+        }
+
+
+        [HttpGet]
+        [Route("getbyuser/{userId}")]
+        public async Task<IActionResult> GetBookingByUserId([FromRoute] int userId)
+        {
+            var booking = await _mediator.Send(new GetBookingsByUserId { UserId = userId });
+            if (booking == null)
+            {
+                _logger.LogWarning("The Id could not be found");
+                return NotFound();
+            }
+            var mappedResult = _mapper.Map<List<BookingGetDto>>(booking);
             return Ok(mappedResult);
         }
     }
