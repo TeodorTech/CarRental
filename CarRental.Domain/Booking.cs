@@ -18,6 +18,8 @@ namespace CarRental.Domain
         public int UserId { get; set; }
       
         public User User { get; set; }
+        public string CarMake { get; set; }
+        public string TotalCost { get; set; }
 
 
         public Booking()
@@ -25,14 +27,14 @@ namespace CarRental.Domain
 
         }
 
-        public Booking(int carId, int userId,DateTime startDate,DateTime endDate)
+        public Booking(int carId, int userId,DateTime startDate, DateTime endDate, string carMake, string totalCost)
         {
             CarId = carId;
             UserId = userId;
             StartDate = startDate;
             EndDate = endDate;
-
-
+            CarMake = carMake;
+            TotalCost = totalCost;
         }
     }
 }

@@ -20,7 +20,7 @@ namespace CarRental.Application.Bookings.Command
 
         public async Task<Booking> Handle(CreateBooking request, CancellationToken cancellationToken)
         {
-            var booking = new Booking(request.CarId, request.UserId,request.StartDate,request.EndDate);
+            var booking = new Booking(request.CarId, request.UserId,request.StartDate,request.EndDate,request.CarMake,request.TotalCost);
             await _unitOfWork._bookRepo.CreateTheBook(booking);
             await _unitOfWork.Save();
             return booking;
