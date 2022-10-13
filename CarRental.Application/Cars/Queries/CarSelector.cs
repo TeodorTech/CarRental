@@ -10,8 +10,8 @@ namespace CarRental.Application.Cars.Queries
 {
     public class CarSelector:IRequest<List<Car>>
     {
-        public string Make { get; set; }
-        public string Color { get; set; }
-        public int Price { get; set; }
+        public string? Make { get; set; }
+        public string? Color { get; set; }
+        public int? Price { get; set; }
     }
 }

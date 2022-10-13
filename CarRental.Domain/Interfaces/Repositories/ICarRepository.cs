@@ -18,7 +18,7 @@ namespace CarRental.Application.Repositories
         public List<Car> GetAll();
         public List<Car> GetAllCarsByMake(string make);
         public List<Car> GetAllCarsByPrice(int price);
-        public List<Car> CarFilter(string make,string color, int price);
+        public List<Car> CarFilter(string? make,string? color, int? price);
 
     }
 }

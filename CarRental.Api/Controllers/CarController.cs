@@ -77,11 +77,11 @@ namespace CarRental.Api.Controllers
         }
 
         [HttpGet]
-        [Route("carselector/{make}/{price}/{color}")]
-        public async Task<IActionResult> SelectCar([FromRoute] string? make, string? color, int? price )
+        [Route("carselector/")]
+        public async Task<IActionResult> SelectCar([FromQuery] string? make, string? color, int? price )
         {
             _logger.LogInformation("Retrieving the list of cars");
-            var query = new CarSelector { Make = make, Color=color ,Price = (int)price };
+            var query = new CarSelector { Make = make, Color=color ,Price = price };
             var result = await _mediator.Send(query);
             var mappedResult = _mapper.Map<List<CarGetDto>>(result);
             _logger.LogInformation($"There are {result.Count} cars in the fleet");
