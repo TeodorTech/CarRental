@@ -103,3 +103,11 @@ D:\CarRental\CarRental.Api\obj\Debug\net6.0\refint\CarRental.Api.dll
 D:\CarRental\CarRental.Api\obj\Debug\net6.0\CarRental.Api.pdb
 D:\CarRental\CarRental.Api\obj\Debug\net6.0\CarRental.Api.genruntimeconfig.cache
 D:\CarRental\CarRental.Api\obj\Debug\net6.0\ref\CarRental.Api.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Azure.Core.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Azure.Storage.Blobs.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Azure.Storage.Common.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Newtonsoft.Json.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\System.IO.Hashing.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\System.Memory.Data.dll
+D:\CarRental\CarRental.Api\bin\Debug\net6.0\Microsoft.WindowsAzure.Storage.dll

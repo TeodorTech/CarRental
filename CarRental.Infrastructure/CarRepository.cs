@@ -59,34 +59,25 @@ namespace CarRental.Infrastrcuture
             return filteredList;
         }
 
-        public List<Car> CarFilter(string? make, string? color, int? price)
+        public List<Car> CarFilter(string? make, string? color, int? price )
         {
-            var selectedCars = _context.Cars;
-            if (make != null && color != null && price!=null)
-            {
-                return selectedCars.Where(c => c.Make == make && c.Color == color && c.PricePerDay==price).ToList();
-            }
-            if (make != null && color != null)
-            {
-                return selectedCars.Where(c => c.Make == make && c.Color == color).ToList();
-            }
-            if (price != null && color != null)
-            {
-                return selectedCars.Where(c => c.PricePerDay == price && c.Color == color).ToList();
-            }
+            IQueryable<Car> selectedCars = _context.Cars;
+
+
+
             if (make != null)
             {
-              return  selectedCars.Where(c => c.Make == make).ToList();
+                selectedCars = selectedCars.Where(c => c.Make == make);
             }
             if (color != null)
             {
-               return selectedCars.Where(c => c.Color == color).ToList();
+                selectedCars = selectedCars.Where(c => c.Color == color);
             }
             if (price != null)
             {
-                 return selectedCars.Where(c => c.PricePerDay == price).ToList();
+                selectedCars = selectedCars.Where(c => c.PricePerDay <= price);
             }
-          
+
 
             return selectedCars.ToList();
         }
